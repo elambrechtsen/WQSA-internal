@@ -1,0 +1,216 @@
+:root{
+    --brand-paper: rgb(253,251,227);
+    --brand-green: rgb(167,209,202);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;1,200&display=swap');
+
+body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 100%;
+    background-color: var(--brand-paper);
+    margin: 0;
+}
+
+
+/* ---- text ----- */
+.container-fluid{
+    border: 0px solid blue;
+    padding: 0px;
+}
+
+.container-lg{
+        border: 4px solid pink;
+}
+
+
+.quote{
+    text-align: center;
+    font-size: 2em;
+    font-style: italic;
+    padding: 1em 1em;
+    background-color: rgb(255,255,255);
+    color: rgb(150,150,150);
+}
+
+.body-text{
+    font-size: 2em;
+    text-align: center;
+}
+
+h1{
+    font-size: 2.5em;
+    text-align: center;
+    font-weight: 600;
+    margin: 0;
+    
+}
+/* ------------- */
+
+
+/* --- layout ---*/
+.container-fluid{
+    border: 0px solid pink;
+    padding: ;
+}
+
+.container-lg{
+    border: 0px solid pink;
+    background-color: rgb(255, 255, 255);
+    overflow: auto;
+    
+}
+
+.col-lg-7, .col-lg-5{
+    border: 0px solid red;
+}
+
+.row{
+    border: 0px solid blue;
+}
+
+/* ----------- */
+
+
+/* --- images --- */
+
+.part-img{
+    max-width: 75%;
+    margin: auto;
+    display: block;
+}
+
+/* ----------- */
+
+/* --- footer content --- */
+
+.footer-content{
+    background-color: var(--brand-green);
+    text-align: center;
+    padding: 0.5em 0 0.5em 0;
+    color: white;
+    
+}
+
+.footer-content p:first-child{
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+    .body-text , .quote{
+        font-size:1.5em;
+    }
+    h1{
+         font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+.part-img{
+max-width: 100%;
+}
+}
+
+/* ---- navigation --- */
+
+.navbar{
+    --brand-green-pale: rgb(223, 237, 224);
+    background-color: var(--brand-green);
+    border-bottom: 1px solid black;
+}
+
+.nav-item:hover{
+    background-color: var(--brand-green-pale);
+
+}
+
+.nav-link{
+    font-size: 1.5em;
+    color: black;
+}
+
+.nav-link:hover{
+    color: var(--brand-green);
+}
+
+.btn-outline{
+    border: 1px solid white;
+    padding: 0 1em;
+}
+
+.btn-outline:hover{
+    background-color: var(--brand-green-pale);
+}
+
+
+/* ---- text when you hover over the top image ---- */
+/*fade on top image*/
+
+/*
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.main_image {
+  display: block;
+  width: 100%;
+  height: auto;
+
+}
+
+/*background when hovered*/
+/*
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(133, 152, 153,0.9);
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+/*text on image*/
+.text {
+  color: white;
+  font-size: 70px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgb(133, 152, 153); /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
