@@ -1,5 +1,5 @@
 :root{
-    --brand-paper: rgb(253,251,227);
+    --brand-paper: rgb(255,230,230);
     --brand-green: rgb(167,209,202);
 }
 
@@ -149,39 +149,7 @@ max-width: 100%;
 
 
 /* ---- text when you hover over the top image ---- */
-/*fade on top image*/
 
-/*
-.container {
-  position: relative;
-  width: 100%;
-}
-
-.main_image {
-  display: block;
-  width: 100%;
-  height: auto;
-
-}
-
-/*background when hovered*/
-/*
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: rgba(133, 152, 153,0.9);
-}
-
-.container:hover .overlay {
-  opacity: 1;
-}
 /*text on image*/
 .text {
   color: white;
@@ -214,3 +182,8 @@ max-width: 100%;
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
+
+</* -------- photo gallery -------- */
+carousel-div { 
+    width: 80%
+}
