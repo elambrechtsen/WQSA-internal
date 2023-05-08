@@ -81,6 +81,7 @@ h1{
     background-color: rgb(173,216,230);
 }
 
+
 .T{
     background-color: rgb(106,90,205);
 }
@@ -172,6 +173,10 @@ max-width: 100%;
     background-color: var(--brand-green-pale);
 }
 
+nav .btn-outline{
+display: inline-block;
+
+}
 
 /* ---- text when you hover over the top image ---- */
 
