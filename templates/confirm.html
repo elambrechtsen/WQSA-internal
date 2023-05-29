@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Get involved
+{% endblock %}
+
+{% block banner %}
+static/images_WQSA/big_banner.svg
+{% endblock %}
+
+{% block content %}
+<style>
+table{
+margin:auto;
+}
+td{
+font-size: 1.5em;
+padding: 0.25em;
+border-bottom: 1px solid gray;
+}
+td:first-child{
+text-align:right;
+font-weight:bold;
+}
+
+</style>
+<ul></ul>
+<div class="container-lg W">
+    <h1>Your details</h1>
+    <table>
+        <tr> <td>First name</td> <td>{{form_data['firstname']}}</td> </tr>
+        <tr> <td>Last name</td> <td>{{form_data['lastname']}}</td> </tr>
+        <tr ><td>Email</td> <td>{{form_data['email']}}</td> </tr>
+        <tr> <td>About yourself</td> <td>{{form_data['aboutme']}}</td> </tr>
+    </table>
+
+<ul></ul>
+
+    <div class="text-center">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Cancel</a>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Confirm</a>
+        <a href="{{ url_for('get_involved', **form_data) }}" class="btn btn-primary">Edit</a>
+
+    </div>
+
+
+</div>
+<ul></ul>
+{% endblock %}

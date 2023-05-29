@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -20,7 +20,21 @@ def upcoming_events():
 
 @app.route("/get_involved", methods=["GET", "POST"])
 def get_involved():
-    return render_template("get_involved.html")
+    if request.method == "POST":
+        f = request.form
+        print(f)
+        print(f['firstname'])
+       
+
+        return render_template("confirm.html", form_data=f)
+    elif request.method == "GET":
+        temp_form_data = {
+        "firstname" : "James",
+        "lastname"  : "Smith",
+        "email" : "james@gmail.com",
+        "aboutme" : "love everything and everyone"
+        }
+        return render_template("get_involved.html", **temp_form_data)
 
 @app.route("/news")
 def news():
