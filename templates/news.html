@@ -9,5 +9,24 @@ static/images/big_banner.svg
 {% endblock %}
 
 {% block content %}
-news content here
+
+<div class="container-lg py-sm-5 py-1">
+<h1>News</h1>
+<div class="news p-4 my-4 text-end">
+    <a class="btn btn-primary" href="">Add News</a>
+</div>
+
+<div class="news p-4 my-4">
+    <h2>Title</h2>
+    <div class="subtitle">Subtitle</div>
+    <p class="news-text">Content</p>
+    <div class="news-meta">Member and date</div>
+    <div class="news-meta">
+        <a class="btn btn-primary" href="">Update</a>
+        <a class="btn btn-primary" href="">Delete</a>
+
+</div>
+    </div>
+</div>
 {% endblock %}
+

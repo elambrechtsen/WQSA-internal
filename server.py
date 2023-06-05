@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
+from db_functions import run_search_query_tuples
+import json
 
 app = Flask(__name__)
+db_path = 'data/WQSA_db.sqlite'
 
 
 @app.route("/")
@@ -38,7 +41,16 @@ def get_involved():
 
 @app.route("/news")
 def news():
-    return render_template("news.html")
+    sql = """select news.news_id, news.title, news.subtitle, news.content, news.newsdate, member.name
+      from news
+      join member on news.member_id = member.member_id
+      order by news.newsdate desc;
+
+      """
+    result = run_search_query_tuples(sql, (), db_path, True)
+    print(result)
+
+    return render_template("news.html", news=result)
 
 
 if __name__ == "__main__":
