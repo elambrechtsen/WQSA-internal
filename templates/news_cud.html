@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add news
+{% endblock %}
+
+{% block banner %}
+static/images_WQSA/big_banner.svg
+{% endblock %}
+
+{% block content %}
+<div class="container-lg py-sm-5 py-1 A">
+    <div class="news p-4 my-4">
+        <h2>Please enter/update your news items</h2>
+        <form action="" method="POST">
+            <div>
+             <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="" value="{{title}}" required>
+            </div>
+            <div>
+                <label for="subtitle" class="form-label">Subtitle</label>
+                <input type="text" class="form-control" id="subtitle" name="title" placeholder="" value="{{subtitle}}" required>
+            </div>
+
+            <div>
+                <label for="content" class="form-label">News content</label>
+                <textarea class="form-control" id="content" name="title" placeholder="" rows="7" required> {{content}}</textarea>
+            </div>
+
+            <div class="text-end">
+                <button type="reset" class="btn btn-primary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+{% endblock %}

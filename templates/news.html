@@ -12,21 +12,53 @@ static/images/big_banner.svg
 
 <div class="container-lg py-sm-5 py-1">
 <h1>News</h1>
+
 <div class="news p-4 my-4 text-end">
-    <a class="btn btn-primary" href="">Add News</a>
+    <a class="btn btn-primary" href="{{ url_for('news_cud', id=0, task='add') }}">Add News</a>
 </div>
 
-<div class="news p-4 my-4">
-    <h2>Title</h2>
-    <div class="subtitle">Subtitle</div>
-    <p class="news-text">Content</p>
-    <div class="news-meta">Member and date</div>
+{% for row in news %}
+
+<div id="newsid-{{loop.index}}" class="p-4 my-4 container-sm rounded text-center">
+    <h2>{{row['title']}}</h2>
+    <div class="subtitle"> {{row['subtitle']}}</div>
+    <p class="news-text"> {{row['content'] | replace("\n", "<br>") | safe}}</p>
+    <div class="news-meta">Posted by {{row['name']}} on {{row['newsdate'] | news_date}}</div>
     <div class="news-meta">
-        <a class="btn btn-primary" href="">Update</a>
-        <a class="btn btn-primary" href="">Delete</a>
+        <a class="btn btn-secondary" href="">Update</a>
+        <a class="btn btn-secondary" href="">Delete</a>
 
 </div>
     </div>
-</div>
+{% endfor %}
+
+    </div>
+
+    <script>
+        const colourslist = ["A", "B", "C", "D", "E"];
+
+        function generateRandomColor(hexDigits) {
+            const index = Math.floor(Math.random() * colourslist.length);
+            return colourslist[index];
+        }
+
+        function changeBgColor() {
+          for (let i = 0; i < {{news|count}}; i++) {
+              const indexval = i+1;
+              const color = generateRandomColor(colourslist);
+              const newsidelement = document.getElementById("newsid-"+indexval);
+              console.log(newsidelement);
+              newsidelement.classList.add(color);
+              // newsidelement.class.backgroundColor = color;
+          // document.body.style.backgroundColor = color;
+
+            }
+
+        }
+
+        window.addEventListener("DOMContentLoaded", changeBgColor());
+    </script>
+
+
 {% endblock %}
 

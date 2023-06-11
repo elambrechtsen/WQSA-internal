@@ -1,10 +1,15 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from db_functions import run_search_query_tuples
-import json
+from datetime import datetime
 
 app = Flask(__name__)
 db_path = 'data/WQSA_db.sqlite'
 
+@app.template_filter()
+def news_date(sqlite_dt):
+    # create a date object
+    x = datetime.strptime(sqlite_dt, '%Y-%m-%d %H:%M:%S')
+    return x.strftime("%a %d %b %y %H:%M")
 
 @app.route("/")
 def index():
@@ -52,6 +57,9 @@ def news():
 
     return render_template("news.html", news=result)
 
+@app.route("/news_cud")
+def news_cud():
+    return render_template("news_cud.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
