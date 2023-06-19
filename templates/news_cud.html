@@ -9,22 +9,23 @@ static/images_WQSA/big_banner.svg
 {% endblock %}
 
 {% block content %}
+<ul></ul>
 <div class="container-lg py-sm-5 py-1 A">
     <div class="news p-4 my-4">
         <h2>Please enter/update your news items</h2>
-        <form action="" method="POST">
+        <form action="{{url_for('news_cud', id=id, task=task)}}" method="POST">
             <div>
              <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="" value="{{title}}" required>
             </div>
             <div>
                 <label for="subtitle" class="form-label">Subtitle</label>
-                <input type="text" class="form-control" id="subtitle" name="title" placeholder="" value="{{subtitle}}" required>
+                <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="" value="{{subtitle}}" required>
             </div>
 
             <div>
                 <label for="content" class="form-label">News content</label>
-                <textarea class="form-control" id="content" name="title" placeholder="" rows="7" required> {{content}}</textarea>
+                <textarea class="form-control" id="content" name="content" placeholder="" rows="7" required>{{content}}</textarea>
             </div>
 
             <div class="text-end">
@@ -36,4 +37,5 @@ static/images_WQSA/big_banner.svg
     </div>
 
 </div>
+<ul></ul>
 {% endblock %}

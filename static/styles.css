@@ -91,6 +91,16 @@ background-color: rgb(255,255,255);
 }
 
 
+.red-error{
+    color: rgb(255, 0, 0);
+    text-align: center;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10px;
+}
+
+
+
 .col-lg-7, .col-lg-5{
     border: 0px solid red;
 }
