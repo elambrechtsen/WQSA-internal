@@ -213,3 +213,10 @@ form p{
 font-size: 1.5em;
 }
 
+.session{
+    background-color: darkorchid;
+    color: azure;
+    text-align: center;
+    font-size: 2em;
+}
+

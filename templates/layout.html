@@ -47,13 +47,17 @@
 
       <div class="ms-auto">
           <a href="{{url_for('get_involved')}}" class="nav-link btn btn-outline" >Get involved</a>
-          <a href="" class="nav-link btn btn-outline">Log in</a>
+          <a href="{{url_for('login')}}" class="nav-link btn btn-outline">Log in</a>
       </div>
 
     </div>
 
     </nav>
     </div>
+
+    {% if session %}
+        <div class="session"> {{session['name']}} is logged in and their session authorisation is {{session['authorisation']}}</div>
+    {% endif %}
 
 
     <img class="img-fluid" src="static/images_WQSA/flags_parliment_banner.svg" >

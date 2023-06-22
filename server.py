@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, session
 from db_functions import run_search_query_tuples, run_commit_query
 from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = "pjdghhhhhwdsa"
 db_path = 'data/WQSA_db.sqlite'
 
 @app.template_filter()
@@ -81,15 +82,24 @@ def news_cud():
 
             elif data['task'] == 'update':
                 # populate e form with current data
-               # sql = """select title, subtitle, content from news where news_id =?"""
-                # sql = """update news set title=?, subtitle=?, content=?, newsdate=datetime('now') where news_id=?"""
-                return "<h1> I want to update </h1>"
+                sql = """select title, subtitle, content from news where news_id =?"""
+                values_tuple = (data['id'],)
+                result = run_search_query_tuples(sql, values_tuple, db_path, True)
+                result = result[0]
+                return render_template("news_cud.html",
+                                       #title=result['title'],
+                                       #subtitle=result['subtitle'],
+                                       #content=result['content'],
+                                       **result,
+                                       id=data['id'],
+                                       task=data['task'])
             elif data['task'] == 'add':
                 temp = {"title": "Temp title", "subtitle": "Test subtitle", 'content': 'Test Content'}
                 return render_template("news_cud.html", id=0, task=data['task'],
-                                       title=temp['title'],
-                                       subtitle=temp['subtitle'],
-                                       content=temp['content'])
+                                       # title=temp['title'],
+                                       # subtitle=temp['subtitle'],
+                                       # content=temp['content']
+                                        **temp)
 
             else:
                 message = 'unrecognised task from news page'
@@ -101,17 +111,46 @@ def news_cud():
             print(f)
             # add the news entry to the database
             #member is fixed for now
-            if data['task'] == 'add:'
-                sql = "insert into news(title, subtitle, content, newsdate, member_id) values (?,?,?, datetime('now'),2)"
+            if data['task'] == 'add':
+                sql = "insert into news(title, subtitle, content, newsdate, member_id) values (?,?,?, datetime('now', 'localtime'),2)"
                 values_tuples = (f['title'], f['subtitle'], f['content'])
                 result = run_commit_query(sql, values_tuples, db_path)
-            else:
-                return "<h1>Posting for update </h1>"
-            return redirect(url_for('news'))
 
-
-
+            elif data['task'] == 'update':
+                sql = """update news set title=?, subtitle=?, content=?, newsdate=datetime('now') where news_id=?"""
+                values_tuples = (f['title'], f['subtitle'], f['content'], data['id'])
+                result = run_commit_query(sql, values_tuples, db_path)
+                #collect the data from the form and update datbase from at the sent id
+                return redirect(url_for('news'))
     return render_template("news_cud.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    print(session)
+    error = "Your credentials are not recognised"
+    if request.method == 'GET':
+        return render_template('log-in.html', email='mike@gmail.com', password='temp')
+    elif  request.method == 'POST':
+        f=request.form
+        print(f)
+        sql = """ select name, password, authorisation from member where email = ?"""
+        values_tuple =(f['email'],)
+        result = run_search_query_tuples(sql, values_tuple, db_path, True)
+        if result:
+            result = result[0]
+            if result['password'] == f['password']:
+                #start a session
+                session['name']=result['name']
+                session['authorisation'] = result['authorisation']
+                print(session)
+                return redirect(url_for('index'))
+            else:
+                return render_template('log-in.html', email='mike@gmail.com', password='temp', error=error)
+            return "<h1> Result is recognised </h1>"
+        else:
+            return render_template('log-in.html', email='mike@gmail.com', password='temp', error=error)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
