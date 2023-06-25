@@ -59,10 +59,18 @@ def news():
       order by news.newsdate desc;
 
       """
-    result = run_search_query_tuples(sql, (), db_path, True)
-    print(result)
+    news = run_search_query_tuples(sql, (), db_path, True)
+    print(news)
 
-    return render_template("news.html", news=result)
+    sql = """select news.news_id, comments.comments_content, comments.comments_date
+      from news
+      join comments on news.news_id = comments.news_id
+      order by news.newsdate desc;
+      """
+    comments = run_search_query_tuples(sql, (), db_path, True)
+    print(comments)
+    return render_template("news.html", news=news, comments=comments)
+
 
 @app.route("/news_cud", methods=['GET', 'POST'])
 def news_cud():
@@ -87,18 +95,12 @@ def news_cud():
                 result = run_search_query_tuples(sql, values_tuple, db_path, True)
                 result = result[0]
                 return render_template("news_cud.html",
-                                       #title=result['title'],
-                                       #subtitle=result['subtitle'],
-                                       #content=result['content'],
                                        **result,
                                        id=data['id'],
                                        task=data['task'])
             elif data['task'] == 'add':
                 temp = {"title": "Temp title", "subtitle": "Test subtitle", 'content': 'Test Content'}
                 return render_template("news_cud.html", id=0, task=data['task'],
-                                       # title=temp['title'],
-                                       # subtitle=temp['subtitle'],
-                                       # content=temp['content']
                                         **temp)
 
             else:
@@ -112,9 +114,11 @@ def news_cud():
             # add the news entry to the database
             #member is fixed for now
             if data['task'] == 'add':
-                sql = "insert into news(title, subtitle, content, newsdate, member_id) values (?,?,?, datetime('now', 'localtime'),2)"
-                values_tuples = (f['title'], f['subtitle'], f['content'])
+                sql = """insert into news(title, subtitle, content, newsdate, member_id) values (?,?,?, datetime('now', 'localtime'),?)"""
+                values_tuples = (f['title'], f['subtitle'], f['content'], session['member_id'])
                 result = run_commit_query(sql, values_tuples, db_path)
+                #once added redirect to the news page to see newly added item
+                return redirect(url_for('news'))
 
             elif data['task'] == 'update':
                 sql = """update news set title=?, subtitle=?, content=?, newsdate=datetime('now') where news_id=?"""
@@ -134,7 +138,7 @@ def login():
     elif  request.method == 'POST':
         f=request.form
         print(f)
-        sql = """ select name, password, authorisation from member where email = ?"""
+        sql = """ select member_id, name, password, authorisation from member where email = ?"""
         values_tuple =(f['email'],)
         result = run_search_query_tuples(sql, values_tuple, db_path, True)
         if result:
@@ -143,13 +147,18 @@ def login():
                 #start a session
                 session['name']=result['name']
                 session['authorisation'] = result['authorisation']
-                print(session)
+                session['member_id'] = result['member_id']
                 return redirect(url_for('index'))
             else:
                 return render_template('log-in.html', email='mike@gmail.com', password='temp', error=error)
             return "<h1> Result is recognised </h1>"
         else:
             return render_template('log-in.html', email='mike@gmail.com', password='temp', error=error)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":

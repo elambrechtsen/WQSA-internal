@@ -12,10 +12,11 @@ static/images/big_banner.svg
 
 <div class="container-lg py-sm-5 py-1">
 <h1>News</h1>
-
+{% if session and session['authorisation'] == 0 %}
 <div class="news p-4 my-4 text-end">
     <a class="btn btn-secondary" href="{{ url_for('news_cud', id=0, task='add') }}">Add News</a>
 </div>
+    {% endif %}
 
 {% for row in news %}
 
@@ -24,11 +25,15 @@ static/images/big_banner.svg
     <div class="subtitle"> {{row['subtitle']}}</div>
     <p class="news-text"> {{row['content'] | replace("\n", "<br>") | safe}}</p>
     <div class="news-meta">Posted by {{row['name']}} on {{row['newsdate'] | news_date}}</div>
+    <ul></ul>
+    <div>Comment is {{row ['comments_content']}} posted on {{row['comments_date']}}</div>
+    {% if session and session['authorisation'] == 0 %}
     <div class="news-meta">
         <a class="btn btn-secondary" href="{{ url_for('news_cud', id=row['news_id'], task='update')}}">Update</a>
         <a class="btn btn-secondary" href="{{ url_for('news_cud', id=row['news_id'], task='delete')}}">Delete</a>
 
 </div>
+    {% endif %}
     </div>
 {% endfor %}
 

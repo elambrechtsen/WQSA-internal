@@ -46,8 +46,12 @@
       </ul>
 
       <div class="ms-auto">
+          {% if session %}
+          <a href="{{url_for('logout')}}" class="nav-link btn btn-outline">Log out</a>
+          {% else %}
           <a href="{{url_for('get_involved')}}" class="nav-link btn btn-outline" >Get involved</a>
           <a href="{{url_for('login')}}" class="nav-link btn btn-outline">Log in</a>
+          {% endif %}
       </div>
 
     </div>
@@ -56,7 +60,8 @@
     </div>
 
     {% if session %}
-        <div class="session"> {{session['name']}} is logged in and their session authorisation is {{session['authorisation']}}</div>
+        <div class="session"> {{session['name']}} is logged in <br>
+            Their session authorisation is {{session['authorisation']}} and their member id is {{session['member_id']}}</div>
     {% endif %}
 
 

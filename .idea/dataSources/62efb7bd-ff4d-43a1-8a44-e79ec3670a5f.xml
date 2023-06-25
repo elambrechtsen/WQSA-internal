@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="WQSA_db.sqlite">
+<dataSource name="WQSA_db">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.48">
     <root id="1">
       <ServerVersion>3.40.1</ServerVersion>
@@ -1423,28 +1423,195 @@
     <argument id="503" parent="172">
       <Position>1</Position>
     </argument>
-    <table id="504" parent="173" name="sqlite_master">
+    <table id="504" parent="173" name="comments"/>
+    <table id="505" parent="173" name="member"/>
+    <table id="506" parent="173" name="news"/>
+    <table id="507" parent="173" name="sqlite_master">
       <System>1</System>
     </table>
-    <column id="505" parent="504" name="type">
+    <table id="508" parent="173" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="509" parent="504" name="comments_id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="510" parent="504" name="comments_content">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="511" parent="504" name="comments_date">
+      <DasType>date|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="512" parent="504" name="member_id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="513" parent="504" name="news_id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="514" parent="504">
+      <ColNames>member_id</ColNames>
+      <RefColNames>member_id</RefColNames>
+      <RefTableName>member</RefTableName>
+    </foreign-key>
+    <foreign-key id="515" parent="504">
+      <ColNames>news_id</ColNames>
+      <RefColNames>news_id</RefColNames>
+      <RefTableName>news</RefTableName>
+    </foreign-key>
+    <index id="516" parent="504" name="sqlite_autoindex_comments_1">
+      <ColNames>comments_content</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="517" parent="504">
+      <ColNames>comments_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="518" parent="504">
+      <ColNames>comments_content</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_comments_1</UnderlyingIndexName>
+    </key>
+    <column id="519" parent="505" name="member_id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="520" parent="505" name="name">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="521" parent="505" name="email">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="522" parent="505" name="password">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="523" parent="505" name="authorisation">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <index id="524" parent="505" name="sqlite_autoindex_member_1">
+      <ColNames>email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="525" parent="505">
+      <ColNames>member_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="526" parent="505">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_member_1</UnderlyingIndexName>
+    </key>
+    <column id="527" parent="506" name="news_id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="528" parent="506" name="title">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="529" parent="506" name="subtitle">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="530" parent="506" name="content">
+      <DasType>text|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="531" parent="506" name="newsdate">
+      <DasType>date|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="532" parent="506" name="member_id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="533" parent="506">
+      <ColNames>member_id</ColNames>
+      <RefColNames>member_id</RefColNames>
+      <RefTableName>member</RefTableName>
+    </foreign-key>
+    <index id="534" parent="506" name="sqlite_autoindex_news_1">
+      <ColNames>title</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <index id="535" parent="506" name="sqlite_autoindex_news_2">
+      <ColNames>subtitle</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <index id="536" parent="506" name="sqlite_autoindex_news_3">
+      <ColNames>content</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="537" parent="506">
+      <ColNames>news_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="538" parent="506">
+      <ColNames>title</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_news_1</UnderlyingIndexName>
+    </key>
+    <key id="539" parent="506">
+      <ColNames>subtitle</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_news_2</UnderlyingIndexName>
+    </key>
+    <key id="540" parent="506">
+      <ColNames>content</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_news_3</UnderlyingIndexName>
+    </key>
+    <column id="541" parent="507" name="type">
       <DasType>TEXT|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="506" parent="504" name="name">
+    <column id="542" parent="507" name="name">
       <DasType>TEXT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="507" parent="504" name="tbl_name">
+    <column id="543" parent="507" name="tbl_name">
       <DasType>TEXT|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="508" parent="504" name="rootpage">
+    <column id="544" parent="507" name="rootpage">
       <DasType>INT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="509" parent="504" name="sql">
+    <column id="545" parent="507" name="sql">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
+    </column>
+    <column id="546" parent="508" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="547" parent="508" name="seq">
+      <Position>2</Position>
     </column>
   </database-model>
 </dataSource>
