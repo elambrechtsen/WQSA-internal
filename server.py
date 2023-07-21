@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, url_for, redirect, session, send_from_directory
 from db_functions import run_search_query_tuples, run_commit_query
 from datetime import datetime
 
@@ -16,6 +16,10 @@ def news_date(sqlite_dt):
 def index():
     return render_template("index.html")
 
+@app.route('/static/<path:path>')
+def send_report(path):
+    return send_from_directory('static', path)
+
 
 @app.route("/error")
 @app.errorhandler(404)
@@ -26,11 +30,6 @@ def not_found(e='Error'):
 @app.route("/meet_the_team")
 def meet_the_team():
     return render_template("meet_the_team.html")
-
-
-@app.route("/upcoming_events")
-def upcoming_events():
-    return render_template("upcoming_events.html")
 
 
 @app.route("/get_involved", methods=["GET", "POST"])
@@ -183,6 +182,42 @@ def add_comment():
         result = run_commit_query(sql, values_tuples, db_path)
         # once added redirect to the news page to see newly added item
         return redirect(url_for('news'))
+
+@app.route("/upcoming_events", methods=['GET', 'POST'])
+def upcoming_events():
+
+    data = request.args
+    # required_keys=['task']
+    # for k in required_keys:
+    #     if k not in data.keys():
+    #         message = "Do not know what to do with create, read, update on news (keys not present)"
+    #         return render_template('error.html', error=message)
+    if request.method == "GET":
+        if 'task' in data and data['task'] == 'delete':
+            sql = "delete from events where events_id =?"
+            values_tuple = (data['id'],)
+            result = run_commit_query(sql, values_tuple, db_path)
+            if not result:
+                return render_template('error.html', error='Failed to delete events_id')
+
+    elif request.method == "POST":
+        # Add new event
+        f = request.form
+        print(f)
+        if data['task'] == 'add':
+            sql = """insert into events(events_title, events_content, events_date, member_id) values (?,?, datetime('now', 'localtime'),?)"""
+            values_tuples = (f['events_title'], f['events_content'], session['member_id'])
+            result = run_commit_query(sql, values_tuples, db_path)
+            if not result:
+                return render_template('error.html', error='Failed to add new events_id')
+
+    sql = """select events.events_id, events.events_title, events.events_content, events.events_date, member.name
+      from events
+      join member on events.member_id = member.member_id
+      order by events.events_date desc;
+      """
+    events = run_search_query_tuples(sql, (), db_path, True)
+    return render_template("events.html", events=events)
 
 
 if __name__ == "__main__":
