@@ -11,7 +11,7 @@ static/images/big_banner.svg
 {% block content %}
 
 <div class="container-lg py-sm-5 py-1">
-<h1>News</h1>
+<hr> <h1>News</h1> <hr>
 {% if session and session['authorisation'] == 0 %}
 <div class="news p-4 my-4 text-end">
     <a class="btn btn-secondary" href="{{ url_for('news_cud', id=0, task='add') }}">Add News</a>
@@ -19,25 +19,47 @@ static/images/big_banner.svg
     {% endif %}
 
 {% for row in news %}
-
-<div id="newsid-{{loop.index}}" class="p-4 my-4 container-sm rounded text-center">
-    <h2>{{row['title']}}</h2>
-    <div class="subtitle"> {{row['subtitle']}}</div>
-    <p class="news-text"> {{row['content'] | replace("\n", "<br>") | safe}}</p>
-    <div class="news-meta">Posted by {{row['name']}} on {{row['newsdate'] | news_date}}</div>
-    <ul></ul>
-    <div>Comment is {{row ['comments_content']}} posted on {{row['comments_date']}}</div>
-    {% if session and session['authorisation'] == 0 %}
-    <div class="news-meta">
-        <a class="btn btn-secondary" href="{{ url_for('news_cud', id=row['news_id'], task='update')}}">Update</a>
-        <a class="btn btn-secondary" href="{{ url_for('news_cud', id=row['news_id'], task='delete')}}">Delete</a>
-
-</div>
-    {% endif %}
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <div id="newsid-{{loop.index}}" class="p-4 my-4 container-sm rounded text-center">
+                <h2>{{row['title']}}</h2>
+                <hr>
+                <div class="subtitle"> {{row['subtitle']}}</div>
+                <p class="news-text"> {{row['content'] | replace("\n", "<br>") | safe}}</p>
+                <div class="news-meta">Posted by {{row['name']}} on {{row['newsdate'] | news_date}}</div>
+                <ul></ul>
+                {% if session and session['authorisation'] == 0 %}
+                <div class="news-meta">
+                    <a class="btn btn-secondary" href="{{ url_for('news_cud', id=row['news_id'], task='update')}}">Update</a>
+                    <a class="btn btn-secondary" href="{{ url_for('news_cud', id=row['news_id'], task='delete')}}">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            {% for comment in comments %}
+                {% if row ['news_id'] == comment['news_id'] %}
+                    <div id="comment-{{loop.index}}" class="p-4 my-4 container-sm rounded text-center">
+                        <div class="">Comment is {{comment['comments_content']}} posted
+                            <br>on {{comment['comments_date']}}
+                            <br>by {{comment['name']}} </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% if session and ( session['authorisation'] == 0 or session['authorisation'] == 1 ) %}
+                <div class="news-meta">
+                    <form action="{{ url_for('add_comment')}}" method="POST">
+                        <textarea id="comment" name="comment" class="form-control" rows="2"></textarea>
+                        <input type="hidden" name="news_id" value="{{row['news_id']}}"/>
+                        <button type="submit" id="submit" class="btn btn-primary">Add a comment</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
     </div>
 {% endfor %}
+</div>
 
-    </div>
 
     <script>
         const colourslist = ["A", "B", "C", "D", "E"];
@@ -50,14 +72,21 @@ static/images/big_banner.svg
         function changeBgColor() {
           for (let i = 0; i < {{news|count}}; i++) {
               const indexval = i+1;
-              const color = generateRandomColor(colourslist);
+              const newscolor = generateRandomColor(colourslist);
               const newsidelement = document.getElementById("newsid-"+indexval);
+
               console.log(newsidelement);
-              newsidelement.classList.add(color);
+              newsidelement.classList.add(newscolor);
               // newsidelement.class.backgroundColor = color;
           // document.body.style.backgroundColor = color;
-
+                }
+          for (let i = 0; i < {{comments|count}}; i++) {
+              const indexval = i+1;
+              const commentcolor = generateRandomColor(colourslist);
+              const commentidelement = document.getElementById("comment-"+indexval);
+              commentidelement.classList.add(commentcolor);
             }
+
 
         }
 

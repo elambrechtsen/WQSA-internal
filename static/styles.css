@@ -35,6 +35,12 @@ body{
     color: rgb(150,150,150);
 }
 
+.MTT{
+    text-align: center;
+    font-size: 1em;
+    padding: 1em 1em;
+}
+
 .body-text{
     font-size: 2em;
     text-align: center;

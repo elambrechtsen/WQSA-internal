@@ -27,21 +27,23 @@ font-weight:bold;
 <ul></ul>
 <div class="container-lg W">
     <h1>Your details</h1>
+    <form action="{{ url_for('get_involved') }}" method="POST">
+
     <table>
-        <tr> <td>First name</td> <td>{{form_data['firstname']}}</td> </tr>
-        <tr> <td>Last name</td> <td>{{form_data['lastname']}}</td> </tr>
+        <tr> <td>Full name</td> <td>{{form_data['name']}}</td> </tr>
         <tr ><td>Email</td> <td>{{form_data['email']}}</td> </tr>
-        <tr> <td>About yourself</td> <td>{{form_data['aboutme']}}</td> </tr>
+        <tr> <td>Password</td> <td>{{form_data['password']}}</td> </tr>
     </table>
 
 <ul></ul>
+        <input type="hidden" name="confirm" value="true"/>
 
-    <div class="text-center">
-        <a href="{{ url_for('index') }}" class="btn btn-primary">Cancel</a>
-        <a href="{{ url_for('index') }}" class="btn btn-primary">Confirm</a>
-        <a href="{{ url_for('get_involved', **form_data) }}" class="btn btn-primary">Edit</a>
-
-    </div>
+        <div class="text-end">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Cancel</a>
+            <a href="{{ url_for('get_involved', **form_data) }}" class="btn btn-primary">Edit</a>
+            <button type="submit" id="submit" class="btn btn-primary">Confirm</button>
+        </div>
+    </form>
 
 
 </div>

@@ -9,6 +9,7 @@ static/images_WQSA/big_banner.svg
 {% endblock %}
 
 {% block content %}
+<ul></ul>
 <div class="container-lg A">
     <p class="body-text">
         Join us to receive updates about upcoming events we are running
@@ -18,22 +19,21 @@ static/images_WQSA/big_banner.svg
 <div class="container-lg p-3 B">
     <form action="{{ url_for('get_involved') }}" method="POST">
         <div>
-            <label for="firstname" class="form-label">First name</label>
-            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" value="{{firstname}}" required>
+            <label for="name" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="" value="{{name}}" required>
         </div>
 
-            <div>
-            <label for="lastname" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="" value="{{lastname}}" required>
-        </div>
-
-            <div>
+        <div>
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="" value="{{email}}" required>
         </div>
+        <div>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="" value="{{password}}" required>
+        </div>
 
-        <label for="aboutme" class="form-label">Tell us about yourself</label>
-        <textarea id="aboutme" name="aboutme" class="form-control" rows="7" >{{aboutme}}</textarea>
+<!--        <label for="aboutme" class="form-label">Tell us about yourself</label>-->
+<!--        <textarea id="aboutme" name="aboutme" class="form-control" rows="7" >{{aboutme}}</textarea>-->
 
         <div class="text-end">
             <button type="reset" class="btn btn-primary">Reset</button>
@@ -42,4 +42,5 @@ static/images_WQSA/big_banner.svg
         </div>
     </form>
 </div>
+<ul></ul>
 {% endblock %}

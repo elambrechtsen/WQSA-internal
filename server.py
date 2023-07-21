@@ -38,15 +38,27 @@ def get_involved():
     if request.method == "POST":
         f = request.form
         print(f)
-        print(f['firstname'])
-       
+        if 'confirm' in f and f['confirm'] == 'true':
+            sql = """insert into member(name, email, password, authorisation) values (?, ?, ?, '1')"""
+            values_tuples = (f['name'], f['email'], f['password'])
+            result = run_commit_query(sql, values_tuples, db_path)
+            print('Result', result)
+            if result:
+                return render_template("index.html")
+            else:
+                return render_template("error.html", error=result)
+        else:
+            return render_template("confirm.html", form_data=f)
 
-        return render_template("confirm.html", form_data=f)
+
+        # print(result)
+        # once added redirect to the news page to see newly added item
+
     elif request.method == "GET":
         temp_form_data = {
-        "firstname" : "James",
-        "lastname"  : "Smith",
+        "name" : "James Smith",
         "email" : "james@gmail.com",
+        "password" : "temp",
         "aboutme" : "love everything and everyone"
         }
         return render_template("get_involved.html", **temp_form_data)
@@ -62,10 +74,10 @@ def news():
     news = run_search_query_tuples(sql, (), db_path, True)
     print(news)
 
-    sql = """select news.news_id, comments.comments_content, comments.comments_date
-      from news
-      join comments on news.news_id = comments.news_id
-      order by news.newsdate desc;
+    sql = """select comments.news_id, comments.comments_content, comments.comments_date, member.name
+      from comments
+      join member on comments.member_id = member.member_id
+      order by comments.comments_date desc;
       """
     comments = run_search_query_tuples(sql, (), db_path, True)
     print(comments)
@@ -124,7 +136,7 @@ def news_cud():
                 sql = """update news set title=?, subtitle=?, content=?, newsdate=datetime('now') where news_id=?"""
                 values_tuples = (f['title'], f['subtitle'], f['content'], data['id'])
                 result = run_commit_query(sql, values_tuples, db_path)
-                #collect the data from the form and update datbase from at the sent id
+                #collect the data from the form and update database from at the sent id
                 return redirect(url_for('news'))
     return render_template("news_cud.html")
 
@@ -159,6 +171,18 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
+@app.route("/add_comment", methods=["POST"])
+def add_comment():
+    if request.method == "POST":
+        f = request.form
+        print(f)
+        print(f['comment'])
+        sql = """insert into comments(comments_content, comments_date, member_id, news_id) values (?, datetime('now', 'localtime'),?, ?)"""
+        values_tuples = (f['comment'], session['member_id'], f['news_id'])
+        result = run_commit_query(sql, values_tuples, db_path)
+        # once added redirect to the news page to see newly added item
+        return redirect(url_for('news'))
 
 
 if __name__ == "__main__":

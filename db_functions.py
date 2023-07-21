@@ -31,7 +31,7 @@ def run_commit_query(sql_query, values_tuple, file_path):
     except sqlite3.Error as error:
         # if something has gone wrong the error should print in the console
         print("Commit Error: {}".format(error))
-        return False
+        return error
     # if all okay, shut down the connection
     conn.close()
     print("sqlite connection is closed")
