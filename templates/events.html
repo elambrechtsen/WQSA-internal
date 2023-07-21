@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Upcoming events
+{% endblock %}
+
+{% block banner %}
+static/images/big_banner.svg
+{% endblock %}
+
+{% block content %}
+{% for row in events %}
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <div id="eventsid-{{loop.index}}" class="p-4 my-4 container-sm rounded text-center">
+                <h2>{{row['title']}}</h2>
+                <hr>
+                <div class="subtitle"> {{row['subtitle']}}</div>
+                <p class="events-text"> {{row['content'] | replace("\n", "<br>") | safe}}</p>
+                <div class="events-meta">Posted by {{row['name']}} on {{row['events_date']}}</div>
+                <ul></ul>
+                {% if session and session['authorisation'] == 0 %}
+                <div class="events-meta">
+                    <a class="btn btn-secondary" href="{{ url_for('events', id=row['events_id'], task='delete')}}">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% if session and ( session['authorisation'] == 0 or session['authorisation'] == 1 ) %}
+        <h2>Please enter your events items</h2>
+        <form action="{{url_for('events', task=add)}}" method="POST">
+            <div>
+             <label for="events_title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="events_title" name="title" placeholder="" value="{{events_title}}" required>
+            </div>
+            <div>
+                <label for="events_content" class="form-label">Events content</label>
+                <textarea class="form-control" id="events_content" name="content" placeholder="" rows="7" required>{{events_content}}</textarea>
+            </div>
+                        <div class="text-end">
+                <button type="reset" class="btn btn-primary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+            {% endif %}
+{% endblock %}
