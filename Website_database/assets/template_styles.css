@@ -1,0 +1,62 @@
+:root{
+    --base-back: rgb(150,150,150);
+    --black: rgb(0,0,0);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+
+
+.header{
+    background-color: var(--base-back);
+}
+h1{
+    color:white;
+    text-align: left;
+}
+
+/* -- navigation --- */
+.navbar{
+    background-color:  var(--black);
+    border-bottom: 1px solid black;
+
+}
+
+.nav-item:hover{
+    background-color:var(--brand-green-pale);
+}
+
+.nav-link{
+    font-size: 1.5em;
+    color:var(--base-back);
+}
+.nav-link:hover{
+    color:white;
+}
+
+footer{
+    background-color: var(--base-back);
+    text-align: center;
+    padding: 1em 0 1em 0;
+    font-size: 2em;
+    color: white;
+}
+
+
+.row{
+    background-color: var(--base-back);
+}
+
+
+
+
+
+video{
+    max-height: 300px;
+    display: block;
+    margin:auto;
+    margin-bottom: 1em;
+}

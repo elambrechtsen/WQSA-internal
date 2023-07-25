@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Put your own description here</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="assets/template_styles.css">
+    <!-- code display -->
+    <link rel="stylesheet" href="assets/highlight/styles/tomorrow.css">
+    <script src="assets/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<div class="container-fluid header p-3">
+    <h1>Site name</h1>
+</div>
+<nav class="navbar navbar-expand-lg px-3 py-2 mb-2">
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon navbar-dark"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 3</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+
+<div class="container-lg">
+
+    <h2>Brief</h2>
+    <p>The brief for this project is to create a database to attach to our website. We have previously built the foundations of a website and 
+        to develop the complexity we have to be able to manage running a database and connect it with the website. Alongside other heads of pride groups in wellington
+        we have started an orgnaisation called Wellington queer students association to help connect and share ideas with queer youth in the greater Wellington region. 
+        Since I am head of social media to advertise and help organise I have decided to create a website for WQSA. 
+    </p>
+    <hr>
+    <h2>Plan of database</h2>
+        <!-- one image -->
+        <h4>Photo of the plan of the database</h4>
+        <div class="row mb-2">
+            <div class="col-md-12 my-2">
+                <img class="img-fluid mx-auto d-block my-2" src="database_plan.jpeg"> </div>
+            </div>
+        <hr>
+        <h3>Summary of code in all tables</h3>
+        <h4>Member table</h4>
+        <pre style="font-size: 1em;"><code class="SQL">create table member(
+            member_id integer primary key autoincrement not null,
+            name text not null,
+            email text not null unique,
+            password text not null,
+            authorisation integer not null
+        );</code></pre>
+        <hr>
+        <h4>News</h4>
+        <pre style="font-size: 1em;"><code class="SQL">create table news(
+            news_id integer primary key autoincrement not null,
+            title text not null unique,
+            subtitle text not null unique,
+            content text not null unique,
+            newsdate date not null,
+            member_id integer not null,
+            foreign key(member_id) references member(member_id)
+        );
+        </code></pre>
+        <hr>
+        <h4>Comments</h4>
+        <pre style="font-size: 1em;"><code class="SQL">create table comments(
+            comments_id integer primary key autoincrement not null,
+            comments_content text not null unique,
+            comments_date date not null,
+            member_id integer not null,
+            news_id integer not null,
+            foreign key(member_id) references member(member_id),
+            foreign key(news_id) references news(news_id)
+        );
+        </code></pre>
+        <hr>
+        <h4>Events</h4>
+        <pre style="font-size: 1em;"><code class="SQL">create table events(
+            events_id integer primary key autoincrement not null,
+            events_title text not null unique,
+            events_content text not null unique,
+            events_date date not null,
+            member_id integer not null,
+            foreign key(member_id) references member(member_id)
+        );
+        </code></pre>
+        <hr>
+    <h2>Boards and sprints</h2>
+        <!-- one image -->
+        <h4>Photo project backlog at the start</h4>
+        <div class="row mb-2">
+            <div class="col-md-12 my-2">
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/1_project_backlog.png"> </div>
+            </div>
+        <hr>
+
+
+
+        <!-- Heading levels -->
+            <h3>Sprint One</h3>
+
+            <p>Plan</p>
+            <p>Boards</p>
+            <p>Link to the Canvas Page</p>
+            <p>Test</p>
+            <p>Reflect</p>
+        <hr>
+            <h3>Sprint Two</h3>
+            <p>Plan</p>
+            <p>Boards</p>
+            <p>Link to the Canvas Page</p>
+            <p>Test</p>
+            <p>Reflect</p>
+        <hr>
+        <h4>Photo project backlog halfway through</h4>
+        <div class="row mb-2">
+            <div class="col-md-12 my-2">
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/2_Project_Backlog.png"> </div>
+            </div>
+    <h3>Images (landscape fits better than portrait)</h3>
+    <!-- one image -->
+    <div class="row mb-2">
+        <div class="col-md-12 my-2">
+            <img class="img-fluid mx-auto d-block my-2" src="assets/images/place_holder.png"> </div>
+        </div>
+    <!-- two images -->
+    <div class="row">
+        <div class="col-md-6 my-2">
+           <img class="img-fluid mx-auto d-block" src="assets/images/place_holder_sm.jpg">
+        </div>
+        <div class="col-md-6 my-2">
+            <img class="img-fluid mx-auto d-block" src="assets/images/place_holder_sm.jpg">
+        </div>
+    </div>
+        <hr>
+
+    <h3>Video Test Example</h3>
+        <video controls>
+            <source src="assets/vids/littleTest.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
+            molestie consequat, vel illum dolore eu feugiat nulla facilisis at
+            vero eros et accumsan et iusto odio dignissim qui blandit praesent
+            luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        </p>
+        <hr>
+</div>
+<!-- -->
+<div class="container-lg mb-2">
+    <h2> Relevant Implications Summary</h2>
+    <!-- groovy bootstrap list -->
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+    </ol>
+    <hr>
+</div>
+
+<div class="container-lg">
+<h2>Example code presentations</h2>
+    <p>These do not need to be used extensively but look great in the right place</p>
+    <!-- pre stands for pre-formatted and will render text as it appears in the htm code -->
+    <!-- this means extra line breaks appear hence the code starting with no spacings or line breaks-->
+<h3>Some SQL</h3>
+<pre style="font-size: 1em;"><code class="SQL">SELECT track_name as "Tracks",
+album_name as "Album", album_artist as "Artist" --Interesting comment
+FROM music_table
+WHERE track_name like "R%";</code></pre>
+<h3>Some Python</h3>
+<pre style="font-size: 1em;"><code class="Python"># interesting comment
+def review_fruit(l):
+    for x in l:
+        output = "{:&le; 10} -- {: &gt;4}".format(x[0], x[1])
+        print(output)
+    return None</code></pre>
+    <h3>Some CSS</h3>
+<pre style="font-size: 1em;">
+<code class="css">/* interesting comment */
+:root{
+--base-back: rgb(150,150,150);
+--black: rgb(0,0,0);
+}
+body{
+margin: 0;
+padding: 0;
+font-size: 100%;
+}</code></pre>
+<h3>Some HTML</h3>
+<!-- to present html code on an html coded web page raises an interesting problem -->
+<!-- the code needs to be converted into "escape" characters to handle the < and > -->
+<!-- there are online tools to do it https://codebeautify.org/html-escape-unescape -->
+<pre style="font-size: 1em;">
+<code class="html">&lt;!-- interesting comment --&gt;
+&lt;li class=&quot;list-group-item d-flex justify-content-between align-items-start&quot;&gt;
+&lt;div class=&quot;ms-2 me-auto&quot;&gt;
+    &lt;div class=&quot;fw-bold&quot;&gt;Subheading&lt;/div&gt;
+    Content for list item
+&lt;/div&gt;
+&lt;span class=&quot;badge bg-primary rounded-pill&quot;&gt;14&lt;/span&gt;
+&lt;/li&gt;
+</code>
+</pre>
+    <h3>Some Javascript (most likely will not need)</h3>
+<pre style="font-size: 1em;">
+<code class="javscript">function inBoundsCheck(xM, yM, x, y, w, h){
+    if( xM > x && xM < x+w && yM > y && yM < y+h){
+    // interesting comment
+        return true;
+    }else{
+        return false;
+    }
+}</code>
+</pre>
+</div>
+
+<footer> Your name </footer>
