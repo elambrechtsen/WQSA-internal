@@ -96,3 +96,9 @@ static/images/big_banner.svg
 
 {% endblock %}
 
+
+
+                               <form action="{{ url_for('add_email')}}" method="POST">
+                              <input type="text" id="email" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                              <button class="btn btn-success border-rad T" type="button" id="button-addon2">Subscribe</button>
+                                   </form>

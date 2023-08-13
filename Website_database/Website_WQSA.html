@@ -113,26 +113,78 @@
 
 
         <!-- Heading levels -->
-            <h3>Sprint One</h3>
-
-            <p>Plan</p>
-            <p>Boards</p>
+            <h2>Sprint One</h2>
+            <hr>
+            <h3>Plan</h3>
+            <p>For the first sprint of my database, I need to make a feature where you can become a member of the website. This means you can access certain parts of the website but not others. 
+                This would include being able to write comments on the news page but not having access to add news or delete them. So I need to make an authorisation for the members. 
+                If they are signing up from the website then all of their authorisation would be 1 for just the comments because if they are signing up they won’t have access to everything. 
+                I will confirm the details with them first. They will also need to enter their credentials and password for the site. Then I need to add the login feature for the members so that it checks their authorisation so they can have access to what they should. </p>
             <p>Link to the Canvas Page</p>
             <p>Test</p>
-            <p>Reflect</p>
+            <h3>Reflect</h3>
+            <p>Overall this sprint has its challenges but it was a basic start for the database. Adding the confirm details posed a few problems in this sprint because it took you to a separate page and then there you have to confirm, delete, or submit and then from there you have to post it. 
+                However, what I had was it was posted after the first one and not after the confirm page and then I sorted it out. Then for the login page, I created a separate file for that and for that page, I had to ensure that I was using the correct authentication with the correct name because if they comment it posts their name. 
+                I didn’t have too much trouble with this first sprint it was mainly the confirm page that arose issues. It was the first part so it was the sprint where I learnt how to connect the database to the website and how to make the actual database. You need to get the back end of the database to originally work before you connect it to the front part of the website. 
+            </p>
         <hr>
-            <h3>Sprint Two</h3>
-            <p>Plan</p>
+            <h2>Sprint Two</h2>
+            <hr>
+            <h3>Plan</h3>
+            <p>This sprint I need to create a new page to keep up to date with news that is going on to do with WQSA. The news page will be a separate database but will connect to the members database through the member id. This is important because I want each news item to print out the corresponding member name connected with each member id. This means that people can see who made the news article. 
+                The news page also needs to have a date and be in chronological order to make sure you can see the most recent news at the top of the page. The database needs to include the title, subtitle, content, name of the person who posted it and the date it was published. </p>
             <p>Boards</p>
             <p>Link to the Canvas Page</p>
             <p>Test</p>
-            <p>Reflect</p>
+            <h3>Reflect</h3>
+            <p>Overall this sprint was a little challenging but it worked out in the end. When I added news I had to take myself to a different page which was a little tricky to make sure it posted correctly to the news page. I also had to make sure that the date worked and was the correct time. I also added a reset button when you are adding news. 
+                Then I also added delete and update buttons to the individual news items. You can only access the add, update, and delete buttons if you have no authorisation which means you are someone who runs the site. You can’t access it if you are a member that just signed up. This was a time-consuming sprint though because making sure that everything was working and connecting was a little tricky. 
+                Since it is still reasonably early into the databases I was learning how to do everything and the differences between the back end and front end of the database connected with the website. </p>
         <hr>
         <h4>Photo project backlog halfway through</h4>
         <div class="row mb-2">
             <div class="col-md-12 my-2">
                 <img class="img-fluid mx-auto d-block my-2" src="Photos/2_Project_Backlog.png"> </div>
             </div>
+        <!-- Heading levels -->
+            <h2>Sprint Three</h2>
+            <hr>
+
+            <h3>Plan</h3>
+            <p>The plan for this sprint is that I want to add comments to the news page. The people that can access it can be members who sign up to the site. These are the people whose authorisation is 1 because they can access certain things like adding comments but not other things like adding the actual news items. 
+                I also have to make sure that the comments line up with the specific news item and not just down the page randomly. Since I need the member and news id this means I need to have an association table in database. To have an association table I need the id of the comments table which will be a primary key, then I will also need the member id and the news id in the comments table. These will be foreign keys in my database. </p>
+            <p>Boards</p>
+            <p>Link to the Canvas Page</p>
+            <p>Test</p>
+            <h3>Reflect</h3>
+            <p>Overall it was a little tricky to work out making sure that the news id connected with the comments id because the first code I did the comments just printed on the side. But with a bit of guidance from my dad I did manage to find out how to do it. Then I had to make sure that all of the authorisation was working. I did this by checking the authorisation before printing out the add comments. 
+                You can still see the comments when you aren’t logged in but you are unable to add another comment. I tested this and you can see a photo above of making sure the comments posted to the main page when I was adding the comments. </p>
+        <hr>
+
+        <!-- Heading levels -->
+            <h2>Sprint Four</h2>
+            <hr>
+
+            <h3>Plan</h3>
+            <p>This is my final database and I need to add an events page to make sure people are up to date with events happening. The format will be very similar to what we did for the news page where there will be articles in a list in chronological order. However, for the news page I take the users to a separate page when I am adding, deleting or updating news items and I do not want a separate page for this. 
+                I want to have the add feature on the actual page and not take them to a separate page and have the delete button on next to the event that I want to delete. I also want to just clean up everything and make sure that everything is running properly because it is the last sprint so everything needs to be tidy and running correctly.</p>
+            <p>Boards</p>
+            <p>Link to the Canvas Page</p>
+            <p>Test</p>
+            <h3>Reflect</h3>
+            <p>Overall this was reasonably easy to implement because it was pretty similar to the news code that I did. I did have a bit of trouble with the formatting because since I had comments on the news page I had to have different formatting than the events page because it is just all across page. I did this by not doing the code you can see below.
+                <!-- to present html code on an html coded web page raises an interesting problem -->
+                <!-- the code needs to be converted into "escape" characters to handle the < and > -->
+                <!-- there are online tools to do it https://codebeautify.org/html-escape-unescape -->
+                <pre style="font-size: 1em;">
+                <code class="html">&lt;!-- html --&gt;
+                    &lt;div class=&quot;"col-lg-8"&quot;&gt;Container&lt;/div&gt;
+                </code>
+                </pre>
+                which I had for my news page because the page had to have the correct spacing for the comments to fit next to the correct news item. This was my final sprint and since I am near the end of this internal then I understand database more and it I understood it more so I could do it quicker. Especially because I did it soon after the news sprint I began to understand it a 
+                lot more and the connection between the back end of the website which is the database part compared to the html which is the front end. </p>
+        <hr>
+
     <h3>Images (landscape fits better than portrait)</h3>
     <!-- one image -->
     <div class="row mb-2">

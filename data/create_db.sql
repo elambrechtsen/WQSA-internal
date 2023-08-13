@@ -44,6 +44,11 @@ create table events(
     foreign key(member_id) references member(member_id)
 );
 
+create table email(
+    email_address text not null unique,
+    email_date date not null
+);
+
 
 insert into member(name, email, password, authorisation)
 values('Mike', 'mike@gmail.com', 'temp', 0);

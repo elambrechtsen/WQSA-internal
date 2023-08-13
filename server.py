@@ -219,6 +219,18 @@ def upcoming_events():
     events = run_search_query_tuples(sql, (), db_path, True)
     return render_template("events.html", events=events)
 
+@app.route("/add_email", methods=["POST"])
+def add_email():
+    if request.method == "POST":
+        f = request.form
+        print(f)
+        print(f['email'])
+        sql = """insert into email(email_address, email_date) values (?, datetime('now', 'localtime'))"""
+        values_tuples = (f['email'],)
+        result = run_commit_query(sql, values_tuples, db_path)
+        # once added redirect to the index page
+        return redirect(url_for('index'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)

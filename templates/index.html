@@ -134,10 +134,12 @@ static/images_WQSA/flags_banner.svg
                         <div class="mx-5">
 
 
-                           <div class="input-group mb-3 mt-4">
-                              <input type="text" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2">
-                              <button class="btn btn-success border-rad T" type="button" id="button-addon2">Subscribe</button>
-                            </div>
+                           <form action="{{ url_for('add_email')}}" method="POST">
+                               <div class="input-group mb-3 mt-4">
+                                  <input type="text" id="email" name="email" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                  <button class="btn btn-success border-rad T" type="submit" id="submit">Subscribe</button>
+                                </div>
+                           </form>
 
 
                         </div>
