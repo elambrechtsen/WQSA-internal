@@ -9,6 +9,7 @@ static/images_WQSA/big_banner.svg
 {% endblock %}
 
 {% block content %}
+<!--title so users know what page and what the form will do -->
 <ul></ul>
 <div class="container-lg A">
     <p class="body-text">
@@ -16,6 +17,7 @@ static/images_WQSA/big_banner.svg
     </p>
 </div>
 <ul></ul>
+<!--form to sign up to the site -->
 <div class="container-lg p-3 B">
     <form action="{{ url_for('get_involved') }}" method="POST">
         <div>
@@ -42,5 +44,6 @@ static/images_WQSA/big_banner.svg
         </div>
     </form>
 </div>
+
 <ul></ul>
 {% endblock %}
