@@ -36,9 +36,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#sprint_4">Sprint 4</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#sprint_5">Sprint 5</a>
-            </li>
+
         </ul>
     </div>
 
@@ -59,7 +57,7 @@
         <h4>Photo of the plan of the database</h4>
         <div class="row mb-2">
             <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="database_plan.jpeg"> </div>
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/database_plan.jpg"> </div>
             </div>
         <hr>
         <h3>Summary of code in all tables</h3>
@@ -107,6 +105,14 @@
         );
         </code></pre>
         <hr>
+        <h4>Email</h4>
+        <pre style="font-size: 1em;"><code class="SQL">
+            create table email(
+    email_address text not null unique,
+    email_date date not null
+);
+        </code></pre>
+        <hr>
     <h2>Boards and sprints</h2>
         <!-- one image -->
         <h4>Photo project backlog at the start</h4>
@@ -119,318 +125,360 @@
 
         <div class="col-md-12 my-2">
         <!-- Heading levels -->
-            <h2 href="sprint_1">Sprint One</h2>
-            <hr>
-            <h3>Plan</h3>
-            <p>For the first sprint of my database, I need to make a feature where you can become a member of the website. This means you can access certain parts of the website but not others. 
-                This would include being able to write comments on the news page but not having access to add news or delete them. So I need to make an authorisation for the members. 
-                If they are signing up from the website then all of their authorisation would be 1 for just the comments because if they are signing up they won’t have access to everything. 
-                I will confirm the details with them first. They will also need to enter their credentials and password for the site. Then I need to add the login feature for the members so that it checks their authorisation so they can have access to what they should. </p>
-            <p>Link to the Canvas Page</p>
-            <h3>Testing</h3>
-            <p>First I created a log in page so the photos below is progession of me making th log in</p>
-            <div class="col-md-12 my-2">
-
-<hr>
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/1_sig_up.png"> </div>
             
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/2_sign_up.png"> </div>
-        </div>
-        <p>Photo of me testing the beginning stages for people signing up to be a part of the member and then the styled version of the sign in page</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/1_your_details.png"> </div>
-        </div>
-        <p>Then once they have gone to the first page I take them to a confirm your details page</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/member_table.png"> </div>
-        </div>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/member_queries.png"> </div>
-        </div>
-        <p>Here is making the table on the back end of the database and then making some queries for the member table and already adding in some areas</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/log_in_buttons.png"> </div>
-        </div>
-        <p>Photos of the buttons to sign up and sign in</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/logging_in.png"> </div>
-        </div>
-        <p>Here is the page for when you are already a member and have signed up and now you're logging n ot have access to the page under your log in</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/member_signed_up.png"> </div>
-        </div>
-        <p>Then once you have signed up this is what it shows in my code if everything worked correctly</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/log_in.png"> </div>
-        </div>
-        <p>Then this pops up at the top of your page to signal to the user that they are logged in then a button up the top of the page shows to log out an dgets rid of the log in or sign up button</p>
-<hr>
-            <h3>Reflect</h3>
-            <p>Overall this sprint has its challenges but it was a basic start for the database. Adding the confirm details posed a few problems in this sprint because it took you to a separate page and then there you have to confirm, delete, or submit and then from there you have to post it. 
-                However, what I had was it was posted after the first one and not after the confirm page and then I sorted it out. Then for the login page, I created a separate file for that and for that page, I had to ensure that I was using the correct authentication with the correct name because if they comment it posts their name. 
-                I didn’t have too much trouble with this first sprint it was mainly the confirm page that arose issues. It was the first part so it was the sprint where I learnt how to connect the database to the website and how to make the actual database. You need to get the back end of the database to originally work before you connect it to the front part of the website. 
-                This was set up of databases and also doing some trials on the database and membre table to make sure that I add members that don't have authorisation so I can update things later on. 
-                Another part where I was a bit stumped was making sure that when you logged in it took you to another page and there was some trouble because the posting wasn't working correctly. I eventually fixed it though to make sure it actually was posting. 
-            </p>
-        <hr>
-            <h2>Sprint Two</h2>
-            <hr>
-            <h3>Plan</h3>
-            <p>This sprint I need to create a new page to keep up to date with news that is going on to do with WQSA. The news page will be a separate database but will connect to the members database through the member id. This is important because I want each news item to print out the corresponding member name connected with each member id. This means that people can see who made the news article. 
-                The news page also needs to have a date and be in chronological order to make sure you can see the most recent news at the top of the page. The database needs to include the title, subtitle, content, name of the person who posted it and the date it was published. </p>
-            <p>Boards</p>
-            <p>Link to the Canvas Page</p>
-            <h3>Test</h3>
-            <hr>
+
+            
+
             <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/making_news_table.png"> </div>
-            </div>
+    <hr>
+        <h2>Sprint one</h2>
+    <hr>
+        <h4>Plan</h4>
+            <p>For the first sprint of my database, I need to make a feature where you can become a website member and have a news page to print out important news relating to the website. I will first need to make the databases for the members and the news table. Then I will make some queries for each table and then I will move onto focusing on the front end for both the member table and the news table. 
+            This means you can access certain parts of the website but not others. This would include being able to write comments on the news page but not having access to add news or delete them. I will confirm the details with them first. They will also need to enter their credentials and password for the site. Then I need to add the login feature for the members so that it checks their authorisation so they can have access to what they should. 
+            I need to create a new page to keep up to date with news that is going on to do with WQSA. The news page will be a separate database but will connect to the members database through the member id. This is important because I want each news item to print out the corresponding member name connected with each member id. This means that people can see who made the news article. 
+            The news page also needs to have a date and be in chronological order to make sure you can see the most recent news at the top of the page. The database needs to include the title, subtitle, content, name of the person who posted it and the date it was published. </p>
+    <hr>
+        <h4>Testing</h4>
+    <hr>
+        <h5>Creating memeber table</h5>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/member_table.png"> </div>
+                </div>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/member_queries.png"> </div>
+                </div>
+            <p>Here is making the table on the back end of the database and then making some queries for the member table and already adding in some areas</p>
+    <hr>
+        <h5>Creating news table</h5>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/making_news_table.png"> </div>
+                </div>
             <p>This was me making the table at the start of the sprint</p>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/making_news_table.png"> </div>
-            </div>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/making_news_table.png"> </div>
+                </div>
             <p>Then I made a few queries for the news page so I could do some testing and see if it worked correctly. I also wanted to have news items there for users who are looking at the site so it isn't a blank page</p>
-            <hr>
-        
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/temp_news.png"> </div>
-        </div>
-        <p>Photo of the beginning stages for people adding news to the page</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/news_code.png"> </div>
-        </div>
-        <p>Heres is me showing the code for the news where I am connecting the members and the news table together through the member_id for my sql</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/2_news.png"> </div>
-        </div>
-
-        <p>This is me testing out the unstyled news and what it shows when I originally printed out news items on the page</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/updated_news.png"> </div>
-        </div>
-        <p>Then me testing it once it has been styled</p>
-
-<hr>
-
-            <h3>Reflect</h3>
-            <p>Overall this sprint was a little challenging but it worked out in the end. When I added news I had to take myself to a different page which was a little tricky to make sure it posted correctly to the news page. I also had to make sure that the date worked and was the correct time. I also added a reset button when you are adding news. 
-                Then I also added delete and update buttons to the individual news items. You can only access the add, update, and delete buttons if you have no authorisation which means you are someone who runs the site. You can’t access it if you are a member that just signed up. This was a time-consuming sprint though because making sure that everything was working and connecting was a little tricky. 
-                Since it is still reasonably early into the databases I was learning how to do everything and the differences between the back end and front end of the database connected with the website. </p>
-        <hr>
-        <h4>Photo project backlog halfway through</h4>
-        <div class="row mb-2">
+    <hr>
+        <h5>Building the Get Involved for users to sign up</h5>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/1_sig_up.png"> </div>
+                        
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/2_sign_up.png"> </div>
+                    </div>
+            <p>Photo of me testing the beginning stages for people signing up to be a part of the member and then the styled version of the sign in page</p>
+    <hr>
             <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/2_Project_Backlog.png"> </div>
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/1_your_details.png"> </div>
             </div>
-        <!-- Heading levels -->
-            <h2>Sprint Three</h2>
-            <hr>
+            <p>Then once they have gone to the first page I take them to a confirm your details page</p>
+    <hr>
+        <h5>Then I realised it was not connected to my database so I did some updating and then a bit of styling</h5>
+    <hr>
+    <div class="col-md-12 my-2">
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/details.png"> </div>
+                    
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/confirm_details.png"> </div>
+    </div>
+            <p>This is the confirm details and when someone signs up and the dtyled version of it</p>
+    <hr>
+        <h5>Once the html for the member was finished I worked on the news page</h5>
+    <hr>
+         <div class="col-md-12 my-2">
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/temp_news.png"> </div>
+            </div>
+            <p>Photo of the beginning stages for people adding news to the page</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/news_code.png"> </div>
+                </div>
+            <p>Heres is me showing the code for the news where I am connecting the members and the news table together through the member_id for my sql</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/2_news.png"> </div>
+                </div>
 
-            <h3>Plan</h3>
-            <p>The plan for this sprint is that I want to add comments to the news page. The people that can access it can be members who sign up to the site. These are the people whose authorisation is 1 because they can access certain things like adding comments but not other things like adding the actual news items. 
-                I also have to make sure that the comments line up with the specific news item and not just down the page randomly. Since I need the member and news id this means I need to have an association table in database. To have an association table I need the id of the comments table which will be a primary key, then I will also need the member id and the news id in the comments table. These will be foreign keys in my database. </p>
-            <p>Boards</p>
-            <p>Link to the Canvas Page</p>
-            <h3>Test</h3>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/making_comment_table.png"> </div>
-            </div>
-    
+            <p>This is me testing out the unstyled news and what it shows when I originally printed out news items on the page</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/news_testing/updated_news.png"> </div>
+                </div>
+            <p>Then me testing it once it has been styled</p>
+
+    <hr>
+        <h4>Reflection</h4>
+            <p>Overall this sprint has its challenges but it was a basic start for the database. Adding the confirm details posed a few problems in this sprint because it took you to a separate page and then there you have to confirm, delete, or submit and then from there you have to post it. However, what I had was it was posted after the first one and not after the confirm page and then I sorted it out. 
+                I didn’t have too much trouble with this first sprint it was mainly the confirm page that caused issues. This was because the confirm page wasn’t originally posting after the page it was posting to the database at the original sign up and I had to work out connecting the front end of the code to the members table itself. I figured out I had to just insert into the database from my server page using sql code and putting the authorisation automatically to one if you sign up from the website. 
+                It was the first part so it was the sprint where I learnt how to connect the database to the website and how to make the actual database. You need to get the back end of the database to work originally before you connect it to the front part of the website. When I added news I had to take myself to a different page which was a little tricky to make sure it posted correctly to the news page. I also had to make sure that the date worked and was the correct time. 
+            I also added a reset button when you are adding news so this takes the user back to a blank copy and wipes the information. Then I also added delete and update buttons to the individual news items and I changed the styling to make it grey instead of blue because I felt that style of button worked better for my website. You can only access the add, update, and delete buttons if you have no authorisation which means you are someone who runs the site. You can’t access it if you are a member who just signed up. 
+                This was a time-consuming sprint though because making sure that everything was working and connecting was a little tricky. Since it is still reasonably early into the databases I was learning how to do everything and the differences between the back end and front end of the database connected with the website. This sprint was the first one and I completed a lot because these are the foundations of the database and they are the two bigger tables than the rest of mine that I have planned. 
+            I remember doing queries from last year so I was familiar of the layout and how to do them so it didn’t cause that much confusion. However, it still was new for me to do it on pycharm so connecting the database all together and to the db functions was new for me and understanding the layout of databases and the program. Overall this sprint was time-consuming but it was a really good beginning for the rest of my database and I enjoyed learning more about databases again. </p>
+
+    <hr>
+
+        <h2>Sprint two</h2>
+    <hr>
+        <h4>Plan</h4>
+            <p>To start this sprint I wanted to get the sessions going. So this is where you have the ability to sign in and out of the website if you have already signed up through the Get Involved page. There also needs to be a visual reminder at the top of the screen when they sign in just to show to them who is signed in, their authorisation and their member id. The authorisation can remind them what they can and can’t have access to and this will be especially relevant in this sprint because I am also adding comments to the news items. 
+                The people that can access comments can be members who sign up to the site so that is something extra they can do if they sign up. These are the people whose authorisation is 1 because they can access certain things like adding comments but not other things like adding the actual news items. I also have to make sure that the comments line up with the specific news item and not just down the page randomly. Since I need the member and news id this means I need to have an association table in the database. 
+                To have an association table I need the id of the comments table which will be a primary key, then I will also need the member id and the news id in the comments table. These will be foreign keys in my database. </p>
+
+    <hr>
+        <h4>Testing</h4>
+    <hr>
+        <h5>Starting off with the logging in and out</h5>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/logging_in.png"> </div>
+                </div>
+            <p>Here is the page for when you are already a member and have signed up and now you're logging in to have access to the page under your log in</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/member_signed_up.png"> </div>
+                </div>
+            <p>Then once you have signed up this is what it shows in my code if everything worked correctly</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/log_in.png"> </div>
+                </div>
+            <p>Then this pops up at the top of your page to signal to the user that they are logged in then a button up the top of the page shows to log out an dgets rid of the log in or sign up button</p>
+    <hr>
+        <h5>Moving onto the comments</h5>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/making_comment_table.png"> </div>
+                </div>
+
             <p>First I have to make the table in the create_db.sql file and here is me making the table</p>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comment_query.png"> </div>
-            </div>
-    
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comment_query.png"> </div>
+                </div>
+
             <p>Then I made a query to see if it would be printed in the comments table</p>
-            <hr>
+    <hr>
             <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comments_table.png"> </div>
-    
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comments_table.png"> </div>
+
             <p>Here is me checking the comments table and seeing that the comment has been posted and I can see it</p>
-            <hr>
-        </div>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/blank_comment.png"> </div>
-        </div>
-
-        <p>Then I have to focus on the front end of the website so I started trialling where I put it in. This is a photo of me testing to see if it would print out which is why it is a blank comment</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/writing_comment.png"> </div>
-        </div>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comment_posted.png"> </div>
-        </div>
-
-        <p>Then I tested it with me writing a comment in and seeing if it would come up and then it did print!</p>
-        <hr>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/adding_news.png"> </div>
-        </div>
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comment_not_loggedin.png"> </div>
-        </div>
-
-        <p>This is a phot of me checking to make sure the id would work for individual news items then checking to see when I wasn't logged in if it would work</p>
-        <hr>
-            <h3>Reflect</h3>
-            <p>Overall it was a little tricky to work out making sure that the news id connected with the comments id because the first code I did the comments just printed on the side. But with a bit of guidance from my dad I did manage to find out how to do it. Then I had to make sure that all of the authorisation was working. I did this by checking the authorisation before printing out the add comments. 
-                You can still see the comments when you aren’t logged in but you are unable to add another comment. I tested this and you can see a photo above of making sure the comments posted to the main page when I was adding the comments. I also wanted the same styling with the comments that I had for the news items so making sure it had the random colour genrating aspect was also an area which arose some concerns but 
-            I added a seperate generting element for just the comments underneath the one I used for the news and with some adjustments it ended up working just fine. </p>
-        <hr>
-
-        <!-- Heading levels -->
-            <h2>Sprint Four</h2>
-            <hr>
-            <h3>Plan</h3>
-            <p>This is one of the last tables I will be doing and I need to add an events page to make sure people are up to date with events happening. The format will be very similar to what we did for the news page where there will be articles in a list in chronological order. However, for the news page I take the users to a separate page when I am adding, deleting or updating news items and I do not want a separate page for this. 
-                I want to have the add feature on the actual page and not take them to a separate page and have the delete button on next to the event that I want to delete. I also want to just clean up everything and make sure that everything is running properly because it is the last sprint so everything needs to be tidy and running correctly.</p>
-            <p>Boards</p>
-            <p>Link to the Canvas Page</p>
-            <h3>Test</h3>
-
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/making_events_table.png"> </div>
+    <hr>
             </div>
-    
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/blank_comment.png"> </div>
+                </div>
+
+            <p>Then I have to focus on the front end of the website so I started trialling where I put it in. This is a photo of me testing to see if it would print out which is why it is a blank comment</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/writing_comment.png"> </div>
+                </div>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comment_posted.png"> </div>
+                </div>
+
+            <p>Then I tested it with me writing a comment in and seeing if it would come up and then it did print!</p>
+    <hr>
+            <div class="col-md-12 my-2">
+                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/adding_news.png"> </div>
+            </div>
+            <p>This is what it looks like when it is signed in</p>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/comment_testing/comment_not_loggedin.png"> </div>
+                </div>
+            <p>This is what it looks like when you aren't signed in</p>
+            
+
+    <hr>
+        <h4>Reflection</h4>
+            <p>For the login page, I created a separate file for it and a button on the right side next to the get involved. The login page is a simple form that asks for the users email and password and then checks the database to see if there is a member with those details. If there is then it logs in and shows the user a visual cue by having it at the top of the site saying who is logged in and their authorisation details. 
+                An association table was necessary for what I wanted to achieve for the comments section because I wanted the comments to connect to the correct news id and also have the member who wrote the comment print out as well alongside the time and content of the comment. Overall it was a little tricky to work out making sure that the news id connected with the comments id because in the first code I did the comments just printed on the side. But with a bit of guidance from my dad, I did manage to find out how to do it. 
+                This was by choosing to put comments on the same file as the news was the first step because they were being printed on the same page. Then I put all of the comments' content in a for loop and the first thing was checking if the news and the comments id were = then it would print the comment and it would print the content, date, and the member who made the comment. Then to make actual comments on the file I had to start off by checking the session authorisation first because the adding comments will only appear on screen with the correct authorisation. 
+                Then it was just doing a form for the comments which was similar to the one I did for the news. You can still see the comments when you aren’t logged in but you are unable to add another comment. I tested this and you can see a photo above of making sure the comments were posted to the main page when I was adding the comments. When I worked with association tables last year it was a little different because all I was putting in them was the primary key from the two tables and then connected them together through that way. 
+                However, this year was different because I had to have other content on the database because it was printing out actual comments. Once you have signed in then you can have access to the comments which is something else i did during this sprint. </p>
+    <hr>
+
+    <h2>Sprint three</h2>
+    <hr>
+        <h4>Plan</h4>
+            <p>This is my final sprint and I need to add an events page to make sure people are up to date with events happening. The format will be very similar to what we did for the news page where there will be articles in a list in chronological order. However, for the news page I take the users to a separate page when I am adding, deleting or updating news items and I do not want a separate page for this. I want to have the add feature on the actual page and not take them to a separate page and have the delete button on next to the event that I want to delete. 
+                I also want to just clean up everything and make sure that everything is running properly because it is the last sprint so everything needs to be tidy and running correctly. I also have an email sign up on my main page but it isn’t connected to a database so I want to create a table for it and have anyone be able to just put their email address in and then they will sign up for a newsletter or emails from the website. This means they don’t need to make an actual account to the website but they need to just put in their email. 
+                This will be a separate table that isn’t connected to anything else because it isn’t something to print on the website where people can make updates to anything. </p>
+    <hr>
+        <h4>Testing</h4>
+    <hr>
+        <h5>Start off with making the events table</h5>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/making_events_table.png"> </div>
+                </div>
+
             <p>First I have to make the table in the create_db.sql file and here is me making the table</p>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/event_query.png"> </div>
-            </div>
-    
-            <p>Then I made a query to see if it would be printed in the comments table</p>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/event_table.png"> </div>
-            </div>
-    
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/event_query.png"> </div>
+                </div>
+        
+            <p>Then I made a query to see if it would be printed in the events table</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/event_table.png"> </div>
+                </div>
+
             <p>Here is me checking the events table and seeing that the events has been posted and I can see it in the database</p>
-            <hr>
-            <p>Then I made a query to see if it would be printed in the comments table</p>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/writing_trial.png"> </div>
-
-            </div>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/trialling_events.png"> </div>
-            </div>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/events_test.png"> </div>
-            </div>
-
-
-            <p>Then I am doing the front side of the website and trialling printing out events and trialling putting them in. So that is me trialling and then it printing.
-                I also wanted to look at what thequery looked like in the code so there is also a photo of that in there
-            </p>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/database_locked.png"> </div>
-            </div>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/fixed_error_database_locked.png"> </div>
-            </div>
-
-            <p>I also came across an error where the database was locked so it wasn't working and connecting the front end to the databse side of it. 
-                I managed to work it out and realise it was because I ran the wrong program and I should have run the db functions page and then it worked and here are the photos.
-            </p>
-            <hr>
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/events_queries.png"> </div>
-            </div>
-
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/actual_queries.png"> </div>
-            </div>
-
-            <div class="col-md-12 my-2">
-                <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/actual_queries_printed.png"> </div>
-            </div>
-
-            <p>Finally now that I knew everything worked I wanted to put some better queries in there so when the user opens the events page they can see events relevant to the website and it isn't just me trialling things
-            </p>
-            <hr>
-
-
-            <h3>Reflect</h3>
-            <p>Overall this was reasonably easy to implement because it was pretty similar to the news code that I did. I did have a bit of trouble with the formatting because since I had comments on the news page I had to have different formatting than the events page because it is just all across page. I did this by not doing the code you can see below.
-                <!-- to present html code on an html coded web page raises an interesting problem -->
-                <!-- the code needs to be converted into "escape" characters to handle the < and > -->
-                <!-- there are online tools to do it https://codebeautify.org/html-escape-unescape -->
-                <pre style="font-size: 1em;">
-                <code class="html">&lt;!-- html --&gt;
-                    &lt;div class=&quot;"col-lg-8"&quot;&gt;Container&lt;/div&gt;
-                </code>
-                </pre>
-                which I had for my news page because the page had to have the correct spacing for the comments to fit next to the correct news item. This was my final sprint and since I am near the end of this internal then I understand database more and it I understood it more so I could do it quicker. Especially because I did it soon after the news sprint I began to understand it a 
-                lot more and the connection between the back end of the website which is the database part compared to the html which is the front end. </p>
-        <hr>
-                <!-- Heading levels -->
-                <h2>Sprint Five</h2>
+    <hr>
+        <h5>Then I work on the front side</h5>
+            
                 <hr>
-    
-                <h3>Plan</h3>
-                <p>This sprint is reasonbly simple, I will be adding a table for being added to the email list on the main pade. This is so users can stay up to date with the events going on but don't have to sign up to the website.
-                    It will be a seperate table which just records the email address and the time that they signed up to the website. 
-                </p>
-                <p>Boards</p>
-                <p>Link to the Canvas Page</p>
-                <h3>Test</h3>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/writing_trial.png"> </div>
+
+                </div>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/trialling_events.png"> </div>
+                </div>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/events_testing/events_test.png"> </div>
+                </div>
+            <p>Then I made a query on the front side to see if it would be printed in the events table</p>
+    <hr>
+        <h5>Once I'm done on the events table I start working on connecting the email</h5>
+    <hr>
                 <div class="col-md-12 my-2">
                     <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/create_table.png"> </div>
                 </div>
-    
-                <p>Photo of me creating the table</p>
-                <hr>
+
+            <p>Photo of me creating the table</p>
+    <hr>
 
                 <div class="col-md-12 my-2">
                     <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/list_of_tables.png"> </div>
                 </div>
-                <p>List of all of my tables</p>
-                <hr>
+            <p>List of all of my tables</p>
+    <hr>
                 <div class="col-md-12 my-2">
                     <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/table.png"> </div>
                 </div>
-                <p>Photo of table after doing a query</p>
-                <hr>
+            <p>Photo of table after doing a query</p>
+    <hr>
                 <div class="col-md-12 my-2">
                     <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/testing+email.png"> </div>
                 </div>
-                <p>This is me testing it from the front side</p>
-                <hr>
+            <p>This is me testing it from the front side</p>
+    <hr>
                 <div class="col-md-12 my-2">
                     <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/didn't_drop_table.png"> </div>
                 </div>
+
                 <div class="col-md-12 my-2">
                     <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/drop_table.png"> </div>
                 </div>
-                <p>Then I had an error because I did not drop the table then I fixed it</p>
+            <p>Then I had an error because I did not drop the table then I fixed it</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/inspect.png"> </div>
+                </div>
+            <p>This is me inspecting the page and noticing that nothing actually posted to the database once I dropped the table</p>
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/error.png"> </div>
+                </div>
+            <p>Photo of the error on the website after I tried to post the email</p>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/error_code.png"> </div>
+                </div>
+            <p>This is what the error was showing up as in my server</p>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/problem.png"> </div>
+                </div>
+            <p>This is how I fixed it by adding a comma there</p>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/email_testing/working.png"> </div>
+                </div>
+            <p>Then this is the code all working again</p>
+    <hr>
+        <h4>Reflection</h4>
+            <p>Overall this was reasonably easy to implement because it was pretty similar to the news code that I did. I did have a bit of trouble with the formatting because since I had comments on the news page I had to have different formatting than the events page because it is just all across page. I did this by not doing div class="col-lg-8" which I had for my news page because the page had to have the correct spacing for the comments to fit next to the correct news item. 
+                This was my final sprint and since I am near the end of this internal then I understand database more and it I understood it more so I could do it quicker. Especially because I did it soon after the news sprint I began to understand it a lot more and the connection between the back end of the website which is the database part compared to the HTML which is the front end. However, something different on the events page is that if you want to add events on the page it is just a form on the original page. 
+                This was just easier to do and less hassle than taking them to a separate form page. It also only has the title and then the content because I felt that an event just needs a title and then a description. It is in chronological order of when it is posted similar to the news page. The form will also only come up for members with the authorization of 0 which is people associated to the site. Then the email was reasonably straightforward. I forgot to do some little things like dropping the table but was fixed easily. 
+                Then I had an error where the form wasn’t actually posting to the database and it was doing nothing when I checked the inspect page and this was because I did not drop the table. Then I found another error and in my server it was showing up as immutableMultiDict error and it was empty. I fixed this by on my server page I put a comma next to the email to show the code that I didn’t want it to put in everything on that line but just the email. This was a small fix but it was tricky to work out since it was just putting in a comma. However, once I fixed it everything was working fine and showing up in the database. </p>
+    <hr>
 
-                <h3>Reflection</h3>
-                <p>Overall I did have a few problems with this sprint but they were all fixed reasonbly easily. Since I had already added in the signing up email on the front end it wasn't super difficult to add in the database code to the website.
-                    I just added a form tag like I did with the rest of the websit ewhere a form was required for example the news, and events page when having the submit button. I had a bit of touble with the styling but then realised if I put the div tag in the 
-                    form tag then it worked compared to before when it was out of the tag. The other problems are shown above when I did the testing. Overall, since I understan the POST code and adding elements to a database more it was a productive sprint.
+    <h2>Sprint four</h2>
+<hr>
+    <h4>Plan</h4>
+        <p> The plan for this sprint is to test my code to make sure that it is all working correctly and see if I can find any errors. I know that my member page needs a bit of work and that it is not working if I put in an email that already exists. There are also some issues with my confirm page and where it was not correctly posting to the database that I noticed earlier and will be addressing in this sprint. </p>
+    <hr>
+                <h5>Testing</h5>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/passing_empty_values.png"> </div>
+                </div>
+                <p>This was the error that I recieved because I was passing empty values through the confirm page</p>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/input_confirm.png"> </div>
+                </div>
+                <p>Then to put it I put in input tags on my confrm page because they were previously just variables</p>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/fixed_code.png"> </div>
+                </div>
+                <p>Then this is a second check to see if we have inputs in it, if the response in the databse doesn't = true then display the error page and if it does
+                    then all is well and you can see this in the code in the line if 'confirm' in f and f['confirm'] == 'true' and 'name' in f and 'email' in f and 'password' in f:
+                    
                 </p>
+
+    <hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/bad_error_message.png"> </div>
+                </div>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/good_error_message.png"> </div>
+                </div>
+                <p>Then when a user used the same email as a member already in the database this is what came up that is seen in the first image
+                    so I made a better error message for the users.
+                </p>
+<hr>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/integrity_error.png"> </div>
+                </div>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/fixed_integrity_error.png"> </div>
+                </div>
+                <p>I got the integrity error because I was checking to se if a string exists within the object tpe integrity error which wasn't supported because it wasn't a strng so I conversted it into a string</p>
+
+
+<hr>
+                <h5>I also felt that I should have done better testing in the member table so I have done extensive testing here</h5>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/details.png"> </div>
+                </div>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/confirm_details.png"> </div>
+                </div>
+                <p>This is my fixed confirm details</p>
+                <div class="col-md-12 my-2">
+                    <img class="img-fluid mx-auto d-block my-2" src="Photos/Errors/member_testing/member_list.png"> </div>
+                </div>
+                <p>checking database to see if it works and it posted and all works well</p>
+<hr>
+                <h4>Reflection</h4>
+                <p>This was something that I needed to do so it was good that I got around to doing it. After I posted the original template from get involved page it took the user to the confirm template that I had made. In that template, I was building a new form but I didn’t have the values as input tags I was only printing the items as variables that were displayed on the page. 
+                    So when I posted back using the confirm template the only input that was getting passed through was confirm and the details from the user which should have been name, email, and password. To fix this I changed the table printing the values to input tags instead of plain variables. 
+                    I also changed them to be read-only so they could not be edited on the confirm page but there was still an edit button I had previously added to take you back to the main get involved page. Also, something I found to be an error was printing the password and for security reasons, I covered that when I took the user to the confirm page so they could only see dots and not their password. </p>
+                    <p>Another issue I had after confirming was if the sql insert failed to pick up the error it wouldn’t tell the user the issue it would just not post and send them back to the index page. This was because I was checking for just the result and not if the result = true. To fix this the result was already set to true for successful but if the result wasn’t true then I took them to an error page to tell the user the issue. 
+                        I also added a check based on the error based on the error based on if the email address already exists then I returned an error message that made more sense to users pointing out that the email address was already existing in the database. By changing the error in the db_finctions to return as a string then I can use if string in result as the result being returned as a string instead of the object type of integrity error. 
+                        I was not familiar with this error so my dad talked to me about what it is and what it means. Overall this sprint was just a bit of cleaning up previous code that didn’t work how I wanted it to work and was just fixing some small errors and adding in some validation. And putting the input stage on confirm fixed the two errors. </p>
+
+
             <hr>
             <h3>Relevant implications</h3>
             <hr>
             <h5>Intellectual propety</h5>
             <p>In this internal I have addressed intellectual property by writing my own code throughout creating databases. I received some guidance from my dad about how to achieve the comments sprint but it was all still my own work and he just advised me on some structure about what to do. 
-                All of the work I have done was produced by me after getting some base knowledge from Mr Khouri about how to construct a database. Since we did databases last year I already had prior knowledge about them but it was more connecting it to the website which I needed advice on but it is all written and created by me. </p>
+                All of the work I have done was produced by me after getting some base knowledge from Mr Khouri about how to construct a database. Since we did databases last year I already had prior knowledge about them but it was more connecting it to the website which I needed advice on but it is all written and created by me. 
+            All of the planning work was also all done by me and it wasn't anyone elses work. 
+            </p>
 
             <h5>Accessability</h5>
             <p>I have addressed website accessibility in this project because the majority of my font sizes are bigger size. There aren’t huge blocks of text that people could find hard to read and understand. If there are bigger parts of text they are in a bigger font so it isn’t much writing it’s just bigger.
@@ -449,129 +497,7 @@
             <p>I have addressed this in my databases by making sure that everything works in my code and is connected to a database. This was especially relevant in my email database because I added in the code originally when creating my website and it was purely just there for aesthetic reasons.
                 Then I remembered it was thereafter creating my other databases and linking the code on the front side to a database so it does do something. All of my databases work and if a user adds news or comments they appear on the website as well as in the database so we can see all of their additions. 
             </p>
-
-    <h3>Images (landscape fits better than portrait)</h3>
-    <!-- one image -->
-    <div class="row mb-2">
-        <div class="col-md-12 my-2">
-            <img class="img-fluid mx-auto d-block my-2" src="assets/images/place_holder.png"> </div>
         </div>
-    <!-- two images -->
-    <div class="row">
-        <div class="col-md-6 my-2">
-           <img class="img-fluid mx-auto d-block" src="assets/images/place_holder_sm.jpg">
-        </div>
-        <div class="col-md-6 my-2">
-            <img class="img-fluid mx-auto d-block" src="assets/images/place_holder_sm.jpg">
-        </div>
-    </div>
-        <hr>
 
-    <h3>Video Test Example</h3>
-        <video controls>
-            <source src="assets/vids/littleTest.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <p>
-            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-            molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-            vero eros et accumsan et iusto odio dignissim qui blandit praesent
-            luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-        <hr>
-</div>
-<!-- -->
-<div class="container-lg mb-2">
-    <h2> Relevant Implications Summary</h2>
-    <!-- groovy bootstrap list -->
-    <ol class="list-group list-group-numbered">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-            </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-            </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-            </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-    </ol>
-    <hr>
-</div>
-
-</div>
-
-
-<div class="container-lg">
-<h2>Example code presentations</h2>
-    <p>These do not need to be used extensively but look great in the right place</p>
-    <!-- pre stands for pre-formatted and will render text as it appears in the htm code -->
-    <!-- this means extra line breaks appear hence the code starting with no spacings or line breaks-->
-<h3>Some SQL</h3>
-<pre style="font-size: 1em;"><code class="SQL">SELECT track_name as "Tracks",
-album_name as "Album", album_artist as "Artist" --Interesting comment
-FROM music_table
-WHERE track_name like "R%";</code></pre>
-<h3>Some Python</h3>
-<pre style="font-size: 1em;"><code class="Python"># interesting comment
-def review_fruit(l):
-    for x in l:
-        output = "{:&le; 10} -- {: &gt;4}".format(x[0], x[1])
-        print(output)
-    return None</code></pre>
-    <h3>Some CSS</h3>
-<pre style="font-size: 1em;">
-<code class="css">/* interesting comment */
-:root{
---base-back: rgb(150,150,150);
---black: rgb(0,0,0);
-}
-body{
-margin: 0;
-padding: 0;
-font-size: 100%;
-}</code></pre>
-<h3>Some HTML</h3>
-<!-- to present html code on an html coded web page raises an interesting problem -->
-<!-- the code needs to be converted into "escape" characters to handle the < and > -->
-<!-- there are online tools to do it https://codebeautify.org/html-escape-unescape -->
-<pre style="font-size: 1em;">
-<code class="html">&lt;!-- interesting comment --&gt;
-&lt;li class=&quot;list-group-item d-flex justify-content-between align-items-start&quot;&gt;
-&lt;div class=&quot;ms-2 me-auto&quot;&gt;
-    &lt;div class=&quot;fw-bold&quot;&gt;Subheading&lt;/div&gt;
-    Content for list item
-&lt;/div&gt;
-&lt;span class=&quot;badge bg-primary rounded-pill&quot;&gt;14&lt;/span&gt;
-&lt;/li&gt;
-</code>
-</pre>
-    <h3>Some Javascript (most likely will not need)</h3>
-<pre style="font-size: 1em;">
-<code class="javscript">function inBoundsCheck(xM, yM, x, y, w, h){
-    if( xM > x && xM < x+w && yM > y && yM < y+h){
-    // interesting comment
-        return true;
-    }else{
-        return false;
-    }
-}</code>
-</pre>
-</div>
-
+  
 <footer> Your name </footer>

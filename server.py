@@ -37,15 +37,19 @@ def get_involved():
     if request.method == "POST":
         f = request.form
         print(f)
-        if 'confirm' in f and f['confirm'] == 'true':
+        if 'confirm' in f and f['confirm'] == 'true' and 'name' in f and 'email' in f and 'password' in f:
             sql = """insert into member(name, email, password, authorisation) values (?, ?, ?, '1')"""
             values_tuples = (f['name'], f['email'], f['password'])
             result = run_commit_query(sql, values_tuples, db_path)
             print('Result', result)
-            if result:
-                return render_template("index.html")
-            else:
+            # print(result.sqlite_errorcode)
+
+            if result != True:
+                if 'member.email' in result:
+                    result = "Email address already exists"
                 return render_template("error.html", error=result)
+            else:
+                return redirect(url_for('index'))
         else:
             return render_template("confirm.html", form_data=f)
 
@@ -54,13 +58,8 @@ def get_involved():
         # once added redirect to the news page to see newly added item
 
     elif request.method == "GET":
-        temp_form_data = {
-        "name" : "James Smith",
-        "email" : "james@gmail.com",
-        "password" : "temp",
-        "aboutme" : "love everything and everyone"
-        }
-        return render_template("get_involved.html", **temp_form_data)
+
+        return render_template("get_involved.html")
 
 @app.route("/news")
 def news():
@@ -110,9 +109,8 @@ def news_cud():
                                        id=data['id'],
                                        task=data['task'])
             elif data['task'] == 'add':
-                temp = {"title": "Temp title", "subtitle": "Test subtitle", 'content': 'Test Content'}
-                return render_template("news_cud.html", id=0, task=data['task'],
-                                        **temp)
+
+                return render_template("news_cud.html", id=0, task=data['task'])
 
             else:
                 message = 'unrecognised task from news page'
@@ -145,12 +143,12 @@ def login():
     print(session)
     error = "Your credentials are not recognised"
     if request.method == 'GET':
-        return render_template('log-in.html', email='mike@gmail.com', password='temp')
+        return render_template('log-in.html')
     elif  request.method == 'POST':
         f=request.form
         print(f)
         sql = """ select member_id, name, password, authorisation from member where email = ?"""
-        values_tuple =(f['email'],)
+        values_tuple = (f['email'],)
         result = run_search_query_tuples(sql, values_tuple, db_path, True)
         if result:
             result = result[0]
@@ -161,10 +159,9 @@ def login():
                 session['member_id'] = result['member_id']
                 return redirect(url_for('index'))
             else:
-                return render_template('log-in.html', email='mike@gmail.com', password='temp', error=error)
-            return "<h1> Result is recognised </h1>"
+                return render_template('log-in.html', error=error)
         else:
-            return render_template('log-in.html', email='mike@gmail.com', password='temp', error=error)
+            return render_template('log-in.html', error=error)
 
 @app.route("/logout")
 def logout():

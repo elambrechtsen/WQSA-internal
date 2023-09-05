@@ -52,13 +52,13 @@ create table email(
 
 
 insert into member(name, email, password, authorisation)
-values('Mike', 'mike@gmail.com', 'temp', 0);
+values('James', 'james@gmail.com', 'temp', 0);
 insert into member(name, email, password, authorisation)
-values('Vanessa', 'vanessa@gmail.com', 'temp', 0);
+values('Tilly', 'Tilly@gmail.com', 'temp', 0);
 insert into member(name, email, password, authorisation)
-values('Olivia', 'olivia@gmail.com', 'temp', 1);
+values('Abbie', 'abbie@gmail.com', 'temp', 1);
 insert into member(name, email, password, authorisation)
-values('Suzie', 'suize@gmail.com', 'temp', 1);
+values('Sacha', 'sacha@gmail.com', 'temp', 1);
 
 insert into news(title, subtitle, content, newsdate, member_id)
 values ('Updates in queer news',
@@ -66,7 +66,7 @@ values ('Updates in queer news',
         'Not just male and female anymore, you can be anything you want' || char(10) ||
         'This new generation is all for being who you want to be',
         '2023-05-26 11:25:04',
-        (select member_id from member where name = 'Mike')
+        (select member_id from member where name = 'Tilly')
       );
 
 insert into news(title, subtitle, content, newsdate, member_id)
@@ -75,13 +75,13 @@ values ('KEEP UP TO DATE',
         'she/her, he/him, they/them' || char(10) ||
         'and more to your heart feels happy ',
         '2023-04-12 16:05:00',
-        (select member_id from member where name = 'Vanessa')
+        (select member_id from member where name = 'James')
       );
 
 insert into comments(comments_content, comments_date, member_id, news_id)
 values ('This is comment',
         '2023-04-12 16:05:00',
-        (select member_id from member where name = 'Vanessa'),
+        (select member_id from member where name = 'Abbie'),
         (select news_id from news where title = 'KEEP UP TO DATE')
 
        );
@@ -90,7 +90,7 @@ insert into events(events_title, events_content, events_date, member_id)
 values ('Charity event!',
         'We will be hosting a ball on the 2nd of November to raise money for Rainbow charities across NZ',
         '2023-13-08 21:11:04',
-        (select member_id from member where name = 'Vanessa')
+        (select member_id from member where name = 'James')
        );
 
 insert into events(events_title, events_content, events_date, member_id)
@@ -98,14 +98,14 @@ values ('Picnic for queer youth',
         'Our team has collaborated to make an inter school queer picnic on Saturday the 16th of September. Make sure you come along and you can bring some friends and shared Kai for everyone to enjoy!' ||
         'It will be a great opportunity for you to meet queer youth across Wellington',
         '2023-06-08 13:25:10',
-        (select member_id from member where name = 'Mike')
+        (select member_id from member where name = 'Tilly')
        );
 
 insert into events(events_title, events_content, events_date, member_id)
 values ('Zoom call to talk about queer topics',
         'We will be having a zoom call to discuss how we can make Wellington a safer place for queer youth and how we can help. We want everyones ideas sp please cme alone! Date is tbd.',
         '2023-06-29 08:32:00',
-        (select member_id from member where name = 'Vanessa')
+        (select member_id from member where name = 'James')
        );
 
 insert into email(email_address, email_date)

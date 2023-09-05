@@ -29,14 +29,21 @@ font-weight:bold;
 <div class="container-lg W">
     <h1>Your details</h1>
     <form action="{{ url_for('get_involved') }}" method="POST">
-
     <table>
-        <tr> <td>Full name</td> <td>{{form_data['name']}}</td> </tr>
-        <tr ><td>Email</td> <td>{{form_data['email']}}</td> </tr>
-        <tr> <td>Password</td> <td>{{form_data['password']}}</td> </tr>
+        <tr>
+            <td>Full name</td>
+            <td><input class="form-control" id="name" name="name" value="{{form_data['name']}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input class="form-control" id="email" name="email" value="{{form_data['email']}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input class="form-control" type="password" id="password" name="password" value="{{form_data['password']}}" readonly></td>
+        </tr>
     </table>
-
-<ul></ul>
+        <ul></ul>
         <input type="hidden" name="confirm" value="true"/>
 
         <div class="text-end">
