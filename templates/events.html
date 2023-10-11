@@ -8,43 +8,70 @@ Upcoming events
 static/images/big_banner.svg
 {% endblock %}
 
-{% block content %}
-{% for row in events %}
-<!--basic format for the events -->
-    <div class="row align-items-center">
-<!--        <div class="col-lg-8">-->
-            <div id="eventsid-{{loop.index}}" class="p-4 my-4 container-sm rounded text-center">
-                <h2>{{row['events_title']}}</h2>
-                <hr>
-                <p class="events-text"> {{row['events_content'] | replace("\n", "<br>") | safe}}</p>
-                <div class="events-meta">Posted by {{row['name']}} on {{row['events_date']}}</div>
-                <ul></ul>
-                {% if session and session['authorisation'] == 0 %}
-                <div class="events-meta">
-                    <a class="btn btn-secondary" href="{{ url_for('upcoming_events', id=row['events_id'], task='delete')}}">Delete</a>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-{% endfor %}
 
-<!--Entering a news item -->
-{% if session and ( session['authorisation'] == 0 or session['authorisation'] == 1 ) %}
+{% block content %}
+    <div class="container-lg py-sm-5 py-1">
+        <hr> <h1>Events</h1> <hr>
+        {% for row in events %}
+            <!--basic format for the events -->
+            <div class="row align-items-center">
+                <div id="eventsid-{{loop.index}}" class="col p-4 my-4 container-sm rounded text-center">
+                    <h2>{{row['events_title']}}</h2>
+                    <hr/>
+                    <p class="events-text"> {{row['events_content'] | replace("\n", "<br>") | safe}}</p>
+                    <div class="events-meta">Posted by {{row['name']}} on {{row['events_date']}}</div>
+                    <ul></ul>
+                </div>
+                {% if session and session['authorisation'] == 0 %}
+                    <div class="events-meta col-sm-1">
+                        <a class="btn btn-secondary" href="{{ url_for('upcoming_events', id=row['events_id'], task='delete')}}">Delete</a>
+                    </div>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <!--Entering a news item -->
+    {% if session and ( session['authorisation'] == 0 or session['authorisation'] == 1 ) %}
         <h2>Please enter your events items</h2>
         <form action="{{url_for('upcoming_events', task='add')}}" method="POST">
             <div>
-             <label for="events_title" class="form-label">Title</label>
+                <label for="events_title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="events_title" name="events_title" placeholder="" required>
             </div>
             <div>
                 <label for="events_content" class="form-label">Events content</label>
                 <textarea class="form-control" id="events_content" name="events_content" placeholder="" rows="7" required></textarea>
             </div>
-                        <div class="text-end">
+            <div class="text-end">
                 <button type="reset" class="btn btn-primary">Reset</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-            {% endif %}
+    {% endif %}
+
+    <script>
+        const colourslist = ["A", "B", "C", "D", "E"];
+
+        function generateRandomColor(hexDigits) {
+            const index = Math.floor(Math.random() * colourslist.length);
+            return colourslist[index];
+        }
+
+        function changeBgColor() {
+          for (let i = 0; i < {{events|count}}; i++) {
+              const indexval = i+1;
+              const eventscolor = generateRandomColor(colourslist);
+              const eventsidelement = document.getElementById("eventsid-"+indexval);
+
+              // console.log(eventsidelement);
+              eventsidelement.classList.add(eventscolor);
+          }
+
+
+        }
+
+        window.addEventListener("DOMContentLoaded", changeBgColor());
+    </script>
 {% endblock %}

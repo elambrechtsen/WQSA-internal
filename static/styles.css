@@ -93,7 +93,8 @@ background-color: rgb(255,255,255);
 
 
 .T{
-    background-color: rgb(106,90,205);
+    background-color: rgb(216,191,216);
+
 }
 
 
@@ -166,7 +167,7 @@ max-width: 100%;
 
 .navbar{
     --brand-green-pale: rgb(223, 237, 224);
-    background-color: var(--brand-green);
+    background-color: rgb(255, 200, 200);
     border-bottom: 1px solid black;
 }
 
@@ -224,5 +225,36 @@ font-size: 1.5em;
     color: azure;
     text-align: center;
     font-size: 2em;
+}
+
+/* Container holding the image and the text */
+.container-img {
+  position: relative;
+  text-align: center;
+  color: white;
+    opacity: 0.7;
+
+}
+.container-img:hover .image-mouseover {
+  opacity: 0.5;
+}
+
+/* Centered text */
+.centered-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 5px 5px black;
+}
+
+.image-mouseover {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
 }
 
