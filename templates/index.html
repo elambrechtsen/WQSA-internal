@@ -106,29 +106,32 @@ static/images_WQSA/flags_banner.svg
             </div>
         </div>
     </div>
+    <ul></ul>
 
 <!--    d-block mt-3-->
-    <ul></ul>
+
 <!--subscribing to recieve emails (email database) -->
 
-    <div class="row d-flex justify-content-center align-items-center rows">
+    <div class="d-flex justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="card E">
                 <div class="text-center">
                     <img src="static/images_WQSA/pride_flag_photo.png" class="rounded-circle" width="100" alt="Waving pride flag cartoon">
-                    <span class="d-block text">Subscribe to our newsletter in order not to miss new arrivals <br> promotions and discounts of our store</span>
-                    <div class="mx-5">
+                    <span class="d-block text">Subscribe to our newsletter in order not to miss new arrivals <br> promotions or events we are running</span>
+                      <div class="mx-5">
                         <form action="{{ url_for('add_email')}}" method="POST">
                             <div class="input-group mb-3 mt-4">
                                 <input type="text" id="email" name="email" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2">
                                 <button class="btn btn-success border-rad T" type="submit" id="submit">Subscribe</button>
                             </div>
                         </form>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     </div>
     <ul></ul>
+
+
 
 {% endblock %}

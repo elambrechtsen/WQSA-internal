@@ -1,7 +1,8 @@
 :root{
 /*    --brand-paper: rgb(255,230,230);*/
     --brand-green: rgb(167,209,202);
-    --brand-paper: rgb(234, 221, 202);
+    --brand-paper: rgb(245, 245, 245);
+    /*--brand-paper: rgb(234, 221, 202);*/
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;1,200&display=swap');
